@@ -1,3 +1,4 @@
+local config = require('config')
 local websocket = require("websocket")
 
 local function handleReceivedCode(code)
@@ -8,8 +9,8 @@ local function handleReceivedCode(code)
   end
 end
 
-local function setupWebSocketConnection(url, cb)
-  local socket = websocket.new(url)
+local function setupWebSocketConnection()
+  local socket = websocket.new(config['WSS'])
 
   socket.onConnected = function()
     print("WebSocket connection established.")
