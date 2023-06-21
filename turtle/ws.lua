@@ -1,4 +1,4 @@
-local config = require('config')
+local config = require('/pj-invade/config')
 local websocket = require("websocket")
 
 local function handleReceivedCode(code)
