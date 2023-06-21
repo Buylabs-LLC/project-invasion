@@ -9,15 +9,15 @@ end
 
 local Config = require('config')
 -- Initialize the Modem
-modem.open(Config.Modem.Port)
+--modem.open(Config.Modem.Port)
 local event, side, channel, replyChannel, message, distance
 
 -- -- Initialize router with network
--- rednet.open('ps-invade')
--- rednet.host('pj-invade', 'main-router')
+rednet.open('ps-invade')
+rednet.host('pj-invade', 'main-router')
 
 
-repeat
-    event, side, channel, replyChannel, message, distance = os.pullEvent("modem_message")
-until channel == Config.Modem.Port
-print("Received a reply: " .. tostring(message))
+--repeat
+--    event, side, channel, replyChannel, message, distance = os.pullEvent("modem_message")
+--until channel == Config.Modem.Port
+--print("Received a reply: " .. tostring(message))
