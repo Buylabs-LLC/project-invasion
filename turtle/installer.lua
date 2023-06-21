@@ -1,8 +1,8 @@
 local Urls = {
-    config = 'http://92.232.171.148/turtle/config.lua',
-    turtle = 'http://92.232.171.148/turtle/turtle.lua',
-    master = 'http://92.232.171.148/turtle/master.lua',
-    router = 'http://92.232.171.148/turtle/router.lua'
+    config = 'https://raw.githubusercontent.com/Buylabs-LLC/project-invasion/main/turtle/config.lua',
+    turtle = 'https://raw.githubusercontent.com/Buylabs-LLC/project-invasion/main/turtle/turtle.lua',
+    master = 'https://raw.githubusercontent.com/Buylabs-LLC/project-invasion/main/turtle/master.lua',
+    router = 'https://raw.githubusercontent.com/Buylabs-LLC/project-invasion/main/turtle/router.lua'
 }
 
 local deviceType = os.getComputerLabel()
