@@ -9,7 +9,7 @@ local Urls = {
 local deviceType = os.getComputerLabel()
 
 function installFile(file)
-    if not fs.isDir('pj-invade') then shell.run('mkdir /pj-invade') end
+    if not fs.isDir('/pj-invade') then shell.run('mkdir /pj-invade') end
 
     if (fs.exists('/pj-invade/config.lua')) then
         print('Backing up config file to config.lua.bk')
