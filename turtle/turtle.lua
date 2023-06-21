@@ -35,12 +35,13 @@ function setId()
     tId = #network + 1
 end
 
-
-
-
+turtle.getInven = function()
+    
+end
 
 checkIfRouterIsRunning()
 setId()
 rednet.host(config.network, tId)
 os.setComputerLabel(tId.. ' Turtle')
+print('Turtle ID: '..tId)
 return turtle
