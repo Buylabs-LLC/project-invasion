@@ -2,7 +2,8 @@ local Urls = {
     config = 'https://raw.githubusercontent.com/Buylabs-LLC/project-invasion/main/turtle/config.lua',
     turtle = 'https://raw.githubusercontent.com/Buylabs-LLC/project-invasion/main/turtle/turtle.lua',
     master = 'https://raw.githubusercontent.com/Buylabs-LLC/project-invasion/main/turtle/master.lua',
-    router = 'https://raw.githubusercontent.com/Buylabs-LLC/project-invasion/main/turtle/router.lua'
+    router = 'https://raw.githubusercontent.com/Buylabs-LLC/project-invasion/main/turtle/router.lua',
+    ws = 'https://raw.githubusercontent.com/Buylabs-LLC/project-invasion/main/turtle/ws.lua'
 }
 
 local deviceType = os.getComputerLabel()
@@ -33,6 +34,8 @@ function installFile(file)
         fs.copy('pj-invade/'..file..'.lua', 'pj-invade/'..file..'.lua.bk')
         fs.delete('pj-invade/'..file..'.lua')
     end
+
+    if string.upper(file) =='ROUTER' then shell.run('wget '..Urls.ws.. ' pj-invade/ws.lua') end
 
     print('Installing the '..file..'.lua')
     shell.run('wget '..Urls[file].. ' pj-invade/'..file..'.lua')
