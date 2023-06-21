@@ -1,3 +1,5 @@
+-- does not crash
+
 turtle = {}
 local tId = 0
 local config = require('config')

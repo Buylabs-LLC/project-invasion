@@ -1,3 +1,5 @@
+-- does not crash
+
 local modem = peripheral.find("modem") or error("No modem attached", 0)
 
 if not modem.isWireless() then
@@ -15,6 +17,7 @@ local Config = require('/pj-invade/config')
 -- -- Initialize router with network
 rednet.open('top')
 rednet.host('pj-invade', 'main-router')
+
 
 
 --repeat
