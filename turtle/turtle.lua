@@ -1,6 +1,6 @@
 turtle = {}
 local tId = 0
-local config = require('/pj-invade/config')
+local config = require('config')
 local routerStatus = 'Waiting for response'
 local network = rednet.lookup(config.network)
 local router = rednet.lookup(config.network, 'main-router')
