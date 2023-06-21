@@ -7,7 +7,7 @@ else
     print('Well done, this router is able to talk to turtles!')
 end
 
-local Config = require('config')
+local Config = require('/pj-invade/config')
 -- Initialize the Modem
 --modem.open(Config.Modem.Port)
 --local event, side, channel, replyChannel, message, distance
