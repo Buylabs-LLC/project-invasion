@@ -10,10 +10,10 @@ end
 local Config = require('config')
 -- Initialize the Modem
 --modem.open(Config.Modem.Port)
-local event, side, channel, replyChannel, message, distance
+--local event, side, channel, replyChannel, message, distance
 
 -- -- Initialize router with network
-rednet.open('ps-invade')
+rednet.open('top')
 rednet.host('pj-invade', 'main-router')
 
 
