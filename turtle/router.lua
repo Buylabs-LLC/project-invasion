@@ -10,17 +10,7 @@ else
 end
 
 local Config = require('/pj-invade/config')
--- Initialize the Modem
---modem.open(Config.Modem.Port)
---local event, side, channel, replyChannel, message, distance
 
 -- -- Initialize router with network
 rednet.open('top')
 rednet.host('pj-invade', 'main-router')
-
-
-
---repeat
---    event, side, channel, replyChannel, message, distance = os.pullEvent("modem_message")
---until channel == Config.Modem.Port
---print("Received a reply: " .. tostring(message))
