@@ -51,7 +51,7 @@ validate.CFunction = function(val)
 	end
 end
 
-validate.nil = function(val)
+validate.nothing = function(val)
 	if type(val) == 'nil' then
 		return true
 	else
@@ -61,7 +61,7 @@ end
 
 validate.spesific = function(val1, val2) -- Input {'Something', ['something', 1, 2, 3, 4, 5]}
 	if not type(val2) == 'table' then
-		print('TYPE ERROR: Invalid value for val2, expected table got '..type(val))
+		print('TYPE ERROR: Invalid value for val2, expected table got '..type(val2))
 		return
 	end
 

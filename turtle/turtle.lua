@@ -5,7 +5,7 @@ local routerStatus = 'Waiting for response'
 local network = rednet.lookup(config.network)
 local router = rednet.lookup(config.network, 'main-router')
 
-function checkIfRouterIsRunning()
+local function checkIfRouterIsRunning()
     local WaitTime = 5 -- Seconds
     local firstCheck = false
     local connectDown = false
@@ -30,8 +30,8 @@ function checkIfRouterIsRunning()
     end
 end
 
-function setId()
-    print('There is '...#network...' devices registered on the network')
+local function setId()
+    print('There is '..#network..' devices registered on the network')
     tId = #network + 1
 end
 
