@@ -39,14 +39,17 @@ function installFile(file)
     print(file..'.lua installed successfully')
 end
 
+if not deviceType then
+    print('You need to set the turtle label to one of the following')
+    print('Master, Turtle, Router')
+    print('You can do this by running: label set [NAME]')
+    return
+end
+
 if (string.upper(deviceType) == 'ROUTER') then
     installFile('router')
 elseif (string.upper(deviceType) == 'MASTER') then
     installFile('master')
 elseif (string.upper(deviceType) == 'TURTLE') then
     installFile('turtle')
-else
-    print('You need to set the turtle label to one of the following')
-    print('Master, Turtle, Router')
-    print('You can do this by running: label set [NAME]')
 end
