@@ -2,12 +2,12 @@
 local repoOwner = "Buylabs-LLC"
 local repoName = "project-invasion"
 local branch = "main" -- Replace with the desired branch name
-local computerPath = "/pj-invade" -- Replace with the path to your computer's folder
+local computerPath = "/startup" -- Replace with the path to your computer's folder
 local repoDirectory = "turtle" -- Replace with the path to the directory in the GitHub repository
 local authToken = "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" -- Replace with your GitHub personal access token
 
 -- Function to check for updates
-local function checkForUpdates()
+function checkForUpdates()
   local apiUrl = string.format("https://api.github.com/repos/%s/%s/commits/%s", repoOwner, repoName, branch)
   local headers = {
     ["User-Agent"] = "CC-Tweaked Auto-Updater",
@@ -58,10 +58,4 @@ local function checkForUpdates()
   end
 end
 
--- Main program logic
-while true do
-  checkForUpdates()
-
-  -- Adjust the delay based on your desired update frequency
-  sleep(60) -- Wait for 60 seconds before the next update
-end
+checkForUpdates()
