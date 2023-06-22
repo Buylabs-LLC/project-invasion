@@ -12,6 +12,8 @@ local function checkIfRouterIsRunning()
     local firstCheck = false
     local connectDown = false
     while true do
+        print(network)
+        print(router)
         if router then
             if not firstCheck then
                 routerStatus = 'Successfully established a connection to the main router!'
