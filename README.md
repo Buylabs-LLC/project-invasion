@@ -1,6 +1,6 @@
 # Project invasion info 
 ## Info
-To install or update the computer/turtle's files set the label to one of the following, using `label set [NAME]` and then run `wget run https://pastebin.com/raw/ugDzcEFd`
+To install run ` ` and input one of the following options upon asked.
 - Turtle
 - Master
 - Router
