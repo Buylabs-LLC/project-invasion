@@ -11,15 +11,17 @@ print('Router Initialized')
 
 
 
-local req
+local id, msg, strReq
 while true do
     updater()
     -- status()
     
     print('Yes, i do get ran!')
     
-    req = rednet.receive()
-    if req then
-        print(req)
+    id, msg, strReq = rednet.receive()
+    if msg then
+        print('ID: '..id)
+        print('MSG: '..msg)
+        print('strReq: '..strReq)
     end
 end
