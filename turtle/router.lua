@@ -1,12 +1,13 @@
 -- does not crash
+local sides = {'left', 'right', 'back', 'top', 'bottom'}
 
-local modem = peripheral.find("modem") or error("No modem attached", 0)
-
-if not modem.isWireless() then
-    print('This needs to have a wireless modem attached to talk to the turtles!')
-    return
-else
-    print('Well done, this router is able to talk to turtles!')
+for _, side in pairs(sides) do
+    if peripheral.isPresent(side) and peripheral.getType(side) == "modem" then
+        print("Wireless modem found!")
+    else
+        print("No wireless modem detected.")
+        return
+    end
 end
 
 local Config = require('/pj-invade/config')
