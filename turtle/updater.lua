@@ -1,13 +1,9 @@
-local http = require("http")
-local filesystem = require("filesystem")
-local textutils = require("textutils")
-
 -- Configuration
-local repoOwner = "YourGitHubUsername"
-local repoName = "YourGitHubRepoName"
+local repoOwner = "Buylabs-LLC"
+local repoName = "project-invasion"
 local branch = "main" -- Replace with the desired branch name
-local computerPath = "/path/to/computer/folder" -- Replace with the path to your computer's folder
-local repoDirectory = "path/to/repo/directory" -- Replace with the path to the directory in the GitHub repository
+local computerPath = "/pj-invade" -- Replace with the path to your computer's folder
+local repoDirectory = "turtle" -- Replace with the path to the directory in the GitHub repository
 
 -- Function to check for updates
 local function checkForUpdates()
@@ -21,7 +17,7 @@ local function checkForUpdates()
   local lastCommit = ""
 
   -- Read the last stored commit hash
-  if filesystem.exists(currentCommitFile) then
+  if fs.exists(currentCommitFile) then
     local file = io.open(currentCommitFile, "r")
     lastCommit = file:read("*a")
     file:close()
