@@ -1,26 +1,25 @@
--- does not crash
+local config = require('/PJ-Invade/config')
+local updater = require('/PJ-Invade/updater')
+-- local status = require('/PJ-Invade/status')
+updater()
 
-local modem = peripheral.find("modem") or error("No modem attached", 0)
+-- Initialize router with network
+peripheral.find("modem", rednet.open)
+rednet.host(config.network, 'main-router')
+print('Router Initialized')
 
-if not modem.isWireless() then
-    print('This needs to have a wireless modem attached to talk to the turtles!')
-    return
-else
-    print('Well done, this router is able to talk to turtles!')
+
+
+
+local req
+while true do
+    while true do -- This should be ran seperately... if not ima remove it
+        os.sleep(60)
+        updater()
+        -- status()
+    end
+    req = rednet.receive()
+    if req then
+        print(req)
+    end
 end
-
-local Config = require('/pj-invade/config')
--- Initialize the Modem
---modem.open(Config.Modem.Port)
---local event, side, channel, replyChannel, message, distance
-
--- -- Initialize router with network
-rednet.open('top')
-rednet.host('pj-invade', 'main-router')
-
-
-
---repeat
---    event, side, channel, replyChannel, message, distance = os.pullEvent("modem_message")
---until channel == Config.Modem.Port
---print("Received a reply: " .. tostring(message))
