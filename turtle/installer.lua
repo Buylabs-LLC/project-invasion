@@ -39,7 +39,7 @@ local function createStartupScript(filePath)
   local scriptContent = [[
     while true do
       require("/PJ-Invade/updater")()
-      require("/PJ-Invade/status")()
+      -- require("/PJ-Invade/status")()
       
       os.sleep(60)
     end
