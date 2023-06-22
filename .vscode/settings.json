@@ -3,6 +3,8 @@
         "fs",
         "shell",
         "peripheral",
-        "rednet"
+        "rednet",
+        "http",
+        "textutils"
     ]
 }
