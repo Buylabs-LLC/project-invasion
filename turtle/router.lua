@@ -12,12 +12,10 @@ print('Router Initialized')
 
 
 local req
-while true do
-    while true do -- This should be ran seperately... if not ima remove it
-        os.sleep(60)
-        updater()
-        -- status()
-    end
+while true do 
+    os.sleep(60)
+    updater()
+    -- status()
     
     print('Yes, i do get ran!')
     
