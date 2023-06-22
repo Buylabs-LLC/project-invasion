@@ -1,6 +1,6 @@
 # Project invasion info 
 ## Info
-To install or update the computer/turtle's files set the label to one of the following, using `label set [NAME]` and then run `wget run https://raw.githubusercontent.com/Buylabs-LLC/project-invasion/main/turtle/installer.lua`
+To install or update the computer/turtle's files set the label to one of the following, using `label set [NAME]` and then run `wget run https://pastebin.com/raw/ugDzcEFd`
 - Turtle
 - Master
 - Router
