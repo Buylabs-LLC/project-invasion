@@ -11,9 +11,11 @@ local router = rednet.lookup(config.network, 'main-router')
 updater()
 
 local function checkIfRouterIsRunning()
-    local WaitTime = 30 -- Seconds
     local firstCheck = false
     local connectDown = false
+
+    rednet.isOpen()
+
     print(config.network)
     print(network)
     print(router)
@@ -33,7 +35,6 @@ local function checkIfRouterIsRunning()
         print('Failed to establish a connection to the main router!')
         connectDown = true
     end
-    os.sleep(WaitTime)
 end
 
 turtle.getInven = function()
