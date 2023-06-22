@@ -12,8 +12,7 @@ print('Router Initialized')
 
 
 local req
-while true do 
-    os.sleep(60)
+while true do
     updater()
     -- status()
     
