@@ -40,18 +40,15 @@ local function createStartupScript(filePath)
   local scriptContent = [[
     -- Content of the startup script
     -- Change the file names as necessary
-    require("/PJ-Invade/updater")()
 
     local int = 0
     local restartIn = 5 -- Time in seconds
 
     repeat
-      print('Starting main in '..restartIn - int..' seconds...')
+      print('Starting everything in '..restartIn - int..' seconds...')
       os.sleep(1)
       int = int + 1
     until int == restartIn
-    print('running main scripts')
-    -- require("/PJ-Invade/status.lua")()
     shell.run("]] .. mainScript .. [[")
   ]]
 
