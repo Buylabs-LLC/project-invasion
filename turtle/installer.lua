@@ -33,6 +33,21 @@ local function downloadFile(url, destination)
   end
 end
 
+local function createStartupScript(filePath)
+  local scriptContent = [[
+    -- Content of the startup script
+    -- Change the file names as necessary
+    shell.run("/PJ-Invade/updater.lua")
+    shell.run("/PJ-Invade/]] .. filePath .. [[")
+  ]]
+
+  local file = io.open("/startup.lua", "w")
+  file:write(scriptContent)
+  file:close()
+
+  print("Created startup script: /startup.lua")
+end
+
 -- Function to prompt for user input
 local function promptInput(prompt)
   io.write(prompt .. ": ")
@@ -46,7 +61,8 @@ if downloadUrls[fileType] then
   local fileName = fileType:lower() .. ".lua"
   local filePath = "/PJ-Invade/" .. fileName
   downloadFile(downloadUrls[string.upper(fileType)], filePath)
-  downloadFile(downloadUrls['UPDATER'], filePath)
+  downloadFile(downloadUrls['UPDATER'], '/PJ-Invade/updater')
+  createStartupScript(filePath)
 else
   print("Invalid type entered.")
   return
