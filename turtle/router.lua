@@ -1,5 +1,5 @@
 local Config = require('/PJ-Invade/config')
-local status = require('/PJ-Invade/status')
+-- local status = require('/PJ-Invade/status')
 
 -- Initialize router with network
 rednet.open('bottom')
