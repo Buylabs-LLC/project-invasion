@@ -15,12 +15,6 @@ peripheral.find("modem", rednet.open)
 local function checkIfRouterIsRunning()
     local firstCheck = false
     local connectDown = false
-
-    rednet.isOpen()
-
-    print(config.network)
-    print(network)
-    print(router)
     if router then
         if not firstCheck then
             routerStatus = 'Successfully established a connection to the main router!'
