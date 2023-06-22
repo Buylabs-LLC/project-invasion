@@ -18,6 +18,9 @@ while true do
         updater()
         -- status()
     end
+    
+    print('Yes, i do get ran!')
+    
     req = rednet.receive()
     if req then
         print(req)
