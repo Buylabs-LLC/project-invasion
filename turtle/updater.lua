@@ -54,8 +54,6 @@ function checkForUpdates()
 
     print("Update complete, now rebooting for the changed to take effect")
     os.reboot()
-  else
-    print("No updates found.")
   end
 end
 
