@@ -28,7 +28,7 @@ local function checkIfRouterIsRunning()
             print('Failed to establish a connection to the main router!')
             connectDown = true
         end
-        os.sleep(1000 * WaitTime)
+        os.sleep(WaitTime)
     end
 end
 

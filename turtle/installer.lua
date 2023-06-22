@@ -8,7 +8,7 @@ local baseUrl = string.format("https://raw.githubusercontent.com/%s/%s/%s", repo
 local folderPath = "turtle" -- Replace with the path to the folder in the repository
 
 local downloadUrls = {
-  MODEM = baseUrl .. "/" .. folderPath .. "/modem.lua",
+  MASTER = baseUrl .. "/" .. folderPath .. "/master.lua",
   ROUTER = baseUrl .. "/" .. folderPath .. "/router.lua",
   TURTLE = baseUrl .. "/" .. folderPath .. "/turtles.lua",
   UPDATER = baseUrl .. "/" .. folderPath .. "/updater.lua",
@@ -20,14 +20,14 @@ local downloadUrls = {
 
 -- Function to download a file from the given URL
 local function downloadFile(url, destination)
-  local response = http.get(url, nil, { ["Authorization"] = "Bearer " .. authToken })
+  local response = http.get(url, { ["Authorization"] = "Bearer " .. authToken })
   if response then
     local fileContent = response.readAll()
     response.close()
 
     local file = io.open(destination, "w")
     file:write(fileContent)
-    file:close()
+    file:close() 
 
     print("Downloaded: " .. destination)
   else
@@ -40,8 +40,8 @@ local function createStartupScript(filePath)
     -- Content of the startup script
     -- Change the file names as necessary
     shell.run("/PJ-Invade/updater.lua")
-    shell.run("/PJ-Invade/status.lua")
-    Sleep(30)
+    -- shell.run("/PJ-Invade/status.lua")
+    os.sleep(30)
     shell.run("/PJ-Invade/]] .. filePath .. [[")
   ]]
 
@@ -59,9 +59,9 @@ local function promptInput(prompt)
 end
 
 -- Main program logic
-local fileType = promptInput("Type (Modem, Router, or Turtle)")
+local fileType = promptInput("Type (Master, Router, or Turtle)")
 
-if downloadUrls[fileType] then
+if downloadUrls[string.upper(fileType)] then
   local fileName = fileType:lower() .. ".lua"
   local filePath = "/PJ-Invade/" .. fileName
   downloadFile(downloadUrls[string.upper(fileType)], filePath)
