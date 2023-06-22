@@ -97,8 +97,4 @@ local function sendStatusUpdate()
   end
 end
 
--- Main program loop
-while true do
-  sendStatusUpdate()
-  os.sleep(updateInterval)
-end
+return sendStatusUpdate()

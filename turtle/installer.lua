@@ -51,8 +51,8 @@ local function createStartupScript(filePath)
       int = int + 1
     until int == restartIn
     print('running main scripts')
-    -- shell.run("/PJ-Invade/status.lua")
-    require("]] .. mainScript .. [[")()
+    -- require("/PJ-Invade/status.lua")()
+    shell.run("]] .. mainScript .. [[")
   ]]
 
   local file = io.open("/startup.lua", "w")
