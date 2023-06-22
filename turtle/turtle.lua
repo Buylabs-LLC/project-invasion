@@ -12,6 +12,7 @@ local function checkIfRouterIsRunning()
     local firstCheck = false
     local connectDown = false
     while true do
+        print(config.network)
         print(network)
         print(router)
         if router then
