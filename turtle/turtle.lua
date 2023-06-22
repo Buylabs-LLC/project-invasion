@@ -49,4 +49,11 @@ setId()
 rednet.host(config.network, tId)
 os.setComputerLabel(tId.. ' Turtle')
 print('Turtle ID: '..tId)
-return turtle
+
+
+
+while true do
+    os.sleep(60)
+    updater()
+    -- status()
+end
