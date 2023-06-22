@@ -10,6 +10,8 @@ local network = rednet.lookup(config.network)
 local router = rednet.lookup(config.network, 'main-router')
 updater()
 
+peripheral.find("modem", rednet.open)
+
 local function checkIfRouterIsRunning()
     local firstCheck = false
     local connectDown = false
