@@ -8,11 +8,12 @@ local baseUrl = string.format("https://raw.githubusercontent.com/%s/%s/%s", repo
 local folderPath = "turtle" -- Replace with the path to the folder in the repository
 
 local downloadUrls = {
-  TURTLE = baseUrl .. "/" .. folderPath .. "/modem.lua",
-  TURTLE = baseUrl .. "/" .. folderPath .. "/router.lua",
+  MODEM = baseUrl .. "/" .. folderPath .. "/modem.lua",
+  ROUTER = baseUrl .. "/" .. folderPath .. "/router.lua",
   TURTLE = baseUrl .. "/" .. folderPath .. "/turtles.lua",
   UPDATER = baseUrl .. "/" .. folderPath .. "/updater.lua",
-  UPDATER = baseUrl .. "/" .. folderPath .. "/config.lua"
+  CONFIG = baseUrl .. "/" .. folderPath .. "/config.lua",
+  STATUS = baseUrl .. "/" .. folderPath .. "/status.lua"
 }
 
 -- Rest of the code remains the same...
@@ -39,6 +40,7 @@ local function createStartupScript(filePath)
     -- Content of the startup script
     -- Change the file names as necessary
     shell.run("/PJ-Invade/updater.lua")
+    shell.run("/PJ-Invade/status.lua")
     Sleep(30)
     shell.run("/PJ-Invade/]] .. filePath .. [[")
   ]]
@@ -65,6 +67,7 @@ if downloadUrls[fileType] then
   downloadFile(downloadUrls[string.upper(fileType)], filePath)
   downloadFile(downloadUrls['UPDATER'], '/PJ-Invade/updater.lua')
   downloadFile(downloadUrls['CONFIG'], '/PJ-Invade/config.lua')
+  downloadFile(downloadUrls['STATUS'], '/PJ-Invade/status.lua')
   createStartupScript(filePath)
 else
   print("Invalid type entered.")
