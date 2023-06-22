@@ -71,6 +71,9 @@ if downloadUrls[string.upper(fileType)] then
   downloadFile(downloadUrls['CONFIG'], '/PJ-Invade/config.lua')
   downloadFile(downloadUrls['STATUS'], '/PJ-Invade/status.lua')
   createStartupScript(filePath)
+  print('Rebooting in 30 seconds...')
+  os.sleep(30)
+  os.reboot()
 else
   print("Invalid type entered.")
   return
