@@ -37,14 +37,15 @@ end
 
 local function createStartupScript(filePath)
   local scriptContent = [[
-    -- Content of the startup script
-    -- Change the file names as necessary
-    shell.run("/PJ-Invade/updater.lua")
-    print('Waiting 15 seconds before running main scripts')
-    os.sleep(15)
-    print('running main scripts')
-    -- shell.run("/PJ-Invade/status.lua")
-    shell.run("/PJ-Invade/]] .. filePath .. [[")
+    while true do
+      require("/PJ-Invade/updater")()
+      require("/PJ-Invade/status")()
+      
+      os.sleep(60)
+    end
+
+    print("Starting Main")
+    require('PJ-Invade/]]..filePath..[[')()
   ]]
 
   local file = io.open("/startup.lua", "w")

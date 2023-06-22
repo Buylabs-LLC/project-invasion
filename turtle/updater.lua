@@ -2,7 +2,7 @@
 local repoOwner = "Buylabs-LLC"
 local repoName = "project-invasion"
 local branch = "main" -- Replace with the desired branch name
-local computerPath = "/startup" -- Replace with the path to your computer's folder
+local computerPath = "/PJ-Invade" -- Replace with the path to your computer's folder
 local repoDirectory = "turtle" -- Replace with the path to the directory in the GitHub repository
 local authToken = "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" -- Replace with your GitHub personal access token
 
@@ -58,4 +58,4 @@ function checkForUpdates()
   end
 end
 
-checkForUpdates()
+return checkForUpdates
