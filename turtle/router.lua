@@ -10,7 +10,7 @@ for _, side in pairs(sides) do
     end
 end
 
-local Config = require('/pj-invade/config')
+local Config = require('/PJ-Invade/config')
 
 -- -- Initialize router with network
 rednet.open('top')
