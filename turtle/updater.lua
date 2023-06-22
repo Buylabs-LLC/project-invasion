@@ -31,7 +31,7 @@ local function checkForUpdates()
     -- Update required
     local treeApiUrl = string.format("https://api.github.com/repos/%s/%s/git/trees/%s?recursive=true", repoOwner, repoName, latestCommitHash)
     local treeResponse = http.get(treeApiUrl, headers)
-    local treeData = textutils.unserialiseJSON(treeResponse.readAll())
+    local treeData = textutils.unserializeJSON(treeResponse.readAll())
     local files = treeData.tree
 
     for _, fileData in ipairs(files) do
