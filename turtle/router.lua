@@ -11,7 +11,7 @@ print('Router Initialized')
 
 local req
 while true do
-    req = rednet.recive()
+    req = rednet.receive()
     if req then
         print(req)
     end
