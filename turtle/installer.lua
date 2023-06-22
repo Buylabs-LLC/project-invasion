@@ -11,7 +11,8 @@ local downloadUrls = {
   TURTLE = baseUrl .. "/" .. folderPath .. "/modem.lua",
   TURTLE = baseUrl .. "/" .. folderPath .. "/router.lua",
   TURTLE = baseUrl .. "/" .. folderPath .. "/turtles.lua",
-  UPDATER = baseUrl .. "/" .. folderPath .. "/updater.lua"
+  UPDATER = baseUrl .. "/" .. folderPath .. "/updater.lua",
+  UPDATER = baseUrl .. "/" .. folderPath .. "/config.lua"
 }
 
 -- Rest of the code remains the same...
@@ -61,7 +62,8 @@ if downloadUrls[fileType] then
   local fileName = fileType:lower() .. ".lua"
   local filePath = "/PJ-Invade/" .. fileName
   downloadFile(downloadUrls[string.upper(fileType)], filePath)
-  downloadFile(downloadUrls['UPDATER'], '/PJ-Invade/updater')
+  downloadFile(downloadUrls['UPDATER'], '/PJ-Invade/updater.lua')
+  downloadFile(downloadUrls['CONFIG'], '/PJ-Invade/config.lua')
   createStartupScript(filePath)
 else
   print("Invalid type entered.")
