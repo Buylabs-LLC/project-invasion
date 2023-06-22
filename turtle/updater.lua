@@ -4,11 +4,15 @@ local repoName = "project-invasion"
 local branch = "main" -- Replace with the desired branch name
 local computerPath = "/pj-invade" -- Replace with the path to your computer's folder
 local repoDirectory = "turtle" -- Replace with the path to the directory in the GitHub repository
+local authToken = "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" -- Replace with your GitHub personal access token
 
 -- Function to check for updates
 local function checkForUpdates()
   local apiUrl = string.format("https://api.github.com/repos/%s/%s/commits/%s", repoOwner, repoName, branch)
-  local headers = { ["User-Agent"] = "CC-Tweaked Auto-Updater" }
+  local headers = {
+    ["User-Agent"] = "CC-Tweaked Auto-Updater",
+    ["Authorization"] = "Bearer " .. authToken
+  }
   local response = http.request(apiUrl, nil, headers)
   local commitData = textutils.unserialiseJSON(response.readAll())
   local latestCommitHash = commitData.sha
