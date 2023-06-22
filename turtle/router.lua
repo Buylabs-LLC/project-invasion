@@ -2,7 +2,8 @@ local config = require('/PJ-Invade/config')
 -- local status = require('/PJ-Invade/status')
 
 -- Initialize router with network
-rednet.open('bottom')
+local modem = peripheral.find("modem") or error("No modem attached", 0)
+rednet.open(modem)
 rednet.host(config.network, 'main-router')
 print('Router Initialized')
 
