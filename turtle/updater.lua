@@ -29,24 +29,21 @@ local function checkForUpdates()
 
   if latestCommitHash ~= lastCommit then
     -- Update required
-    local treeApiUrl = string.format("https://api.github.com/repos/%s/%s/git/trees/%s?recursive=true", repoOwner, repoName, latestCommitHash)
+    local treeApiUrl = string.format("https://api.github.com/repos/%s/%s/contents/%s?ref=%s", repoOwner, repoName, repoDirectory, branch)
     local treeResponse = http.get(treeApiUrl, headers)
     local treeData = textutils.unserializeJSON(treeResponse.readAll())
 
     -- Iterate over the tree elements to find the files
-    for _, element in ipairs(treeData.tree) do
-      if element.type == "blob" then
-        local filePath = element.path
-        if filePath:find(repoDirectory) == 1 then
-          local fileName = filePath:sub(#repoDirectory + 2) -- Remove the repoDirectory prefix
-          local downloadUrl = element.url:gsub("/blob/", "/raw/") -- Convert URL to raw format
-          local fileContent = http.get(downloadUrl).readAll()
-          local file = io.open(computerPath .. "/" .. fileName, "w")
-          file:write(fileContent)
-          file:close()
+    for _, element in ipairs(treeData) do
+      if element.type == "file" then
+        local fileName = element.name
+        local downloadUrl = element.download_url
+        local fileContent = http.get(downloadUrl).readAll()
+        local file = io.open(computerPath .. "/" .. fileName, "w")
+        file:write(fileContent)
+        file:close()
 
-          print("Updated: " .. fileName)
-        end
+        print("Updated: " .. fileName)
       end
     end
 
