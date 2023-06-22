@@ -3,12 +3,14 @@
 turtle = {}
 local tId = 0
 local config = require('/PJ-Invade/config')
+local updater = require('/PJ-Invade/updater')
+-- local status = require('/PJ-Invade/status')
 local routerStatus = 'Waiting for response'
 local network = rednet.lookup(config.network)
 local router = rednet.lookup(config.network, 'main-router')
 
 local function checkIfRouterIsRunning()
-    local WaitTime = 5 -- Seconds
+    local WaitTime = 30 -- Seconds
     local firstCheck = false
     local connectDown = false
     while true do
