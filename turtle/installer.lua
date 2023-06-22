@@ -8,9 +8,10 @@ local baseUrl = string.format("https://raw.githubusercontent.com/%s/%s/%s", repo
 local folderPath = "turtle" -- Replace with the path to the folder in the repository
 
 local downloadUrls = {
-  Modem = baseUrl .. "/" .. folderPath .. "/modem_file.lua",
-  Router = baseUrl .. "/" .. folderPath .. "/router_file.lua",
-  Turtle = baseUrl .. "/" .. folderPath .. "/turtle_file.lua"
+  TURTLE = baseUrl .. "/" .. folderPath .. "/modem.lua",
+  TURTLE = baseUrl .. "/" .. folderPath .. "/router.lua",
+  TURTLE = baseUrl .. "/" .. folderPath .. "/turtles.lua",
+  UPDATER = baseUrl .. "/" .. folderPath .. "/updater.lua"
 }
 
 -- Rest of the code remains the same...
@@ -42,9 +43,10 @@ end
 local fileType = promptInput("Type (Modem, Router, or Turtle)")
 
 if downloadUrls[fileType] then
-  local fileName = fileType:lower() .. "_file.lua"
-  local filePath = "/path/to/" .. fileName
-  downloadFile(downloadUrls[fileType], filePath)
+  local fileName = fileType:lower() .. ".lua"
+  local filePath = "/PJ-Invade/" .. fileName
+  downloadFile(downloadUrls[string.upper(fileType)], filePath)
+  downloadFile(downloadUrls['UPDATER'], filePath)
 else
   print("Invalid type entered.")
   return
