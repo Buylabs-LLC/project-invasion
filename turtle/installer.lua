@@ -39,6 +39,7 @@ local function createStartupScript(filePath)
     -- Content of the startup script
     -- Change the file names as necessary
     shell.run("/PJ-Invade/updater.lua")
+    Sleep(30)
     shell.run("/PJ-Invade/]] .. filePath .. [[")
   ]]
 
