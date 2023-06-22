@@ -13,8 +13,7 @@ local function checkForUpdates()
     ["User-Agent"] = "CC-Tweaked Auto-Updater",
     ["Authorization"] = "Bearer " .. authToken
   }
-  local response = http.request(apiUrl, nil, headers)
-  print(response)
+  local response = http.get(apiUrl, headers)
   local commitData = textutils.unserialiseJSON(response.readAll())
   local latestCommitHash = commitData.sha
 
@@ -31,7 +30,7 @@ local function checkForUpdates()
   if latestCommitHash ~= lastCommit then
     -- Update required
     local treeApiUrl = string.format("https://api.github.com/repos/%s/%s/git/trees/%s?recursive=true", repoOwner, repoName, latestCommitHash)
-    local treeResponse = http.request(treeApiUrl, nil, headers)
+    local treeResponse = http.get(treeApiUrl, headers)
     local treeData = textutils.unserialiseJSON(treeResponse.readAll())
     local files = treeData.tree
 
