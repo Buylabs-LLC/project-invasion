@@ -22,4 +22,4 @@ function run()
 end
 
 
-return run()
+return run
