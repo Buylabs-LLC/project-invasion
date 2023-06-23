@@ -23,7 +23,7 @@ while true do
         print('ID')
         print(id)
         print('MSG')
-        print(msg)
+        print(textutils.serialiseJSON(msg))
         print('strReq')
         print(strReq)
     end
