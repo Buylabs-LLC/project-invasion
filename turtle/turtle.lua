@@ -39,7 +39,8 @@ end
 
 while true do
     checkIfRouterIsRunning()
-    os.sleep(60)
     updater()
+
+    rednet.send(7, 'Yes, I am a turle, no I am not doing shit')
     -- status()
 end
