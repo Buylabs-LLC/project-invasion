@@ -20,8 +20,11 @@ while true do
     
     id, msg, strReq = rednet.receive()
     if msg then
-        print('ID: '..id)
-        print('MSG: '..msg)
-        print('strReq: '..strReq)
+        print('ID')
+        print(id)
+        print('MSG')
+        print(msg)
+        print('strReq')
+        print(strReq)
     end
 end
