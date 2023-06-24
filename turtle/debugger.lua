@@ -30,7 +30,7 @@ function Debugger(msg, msgType, whiteBg)
             monitor.setTextColor(colors.lightBlue)
         end
 
-        if whiteBg then
+        if whiteBg == true then
             monitor.setBackgroundColor(colors.white)
         end
 
@@ -40,7 +40,7 @@ function Debugger(msg, msgType, whiteBg)
 
 
         monitor.setTextColor(colors.lightBlue)
-        monitor.setBackgroundColor(colors.white)
+        monitor.setBackgroundColor(colors.black)
     elseif msgType == 'update' then
         print(msg)
     end
