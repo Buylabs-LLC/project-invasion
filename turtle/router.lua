@@ -9,7 +9,6 @@ peripheral.find("modem", rednet.open)
 rednet.host(config.network, 'main-router')
 print('Router Initialized')
 
-
 local id, msg, strReq
 while true do
     updater()
@@ -18,7 +17,7 @@ while true do
     id, msg, strReq = rednet.receive()
     if msg then
         if not turtles[id] then
-            turtles[id] = true
+            turtles[id] = {id = id, active = true}
             print('Added a new turtle to the local db')
             print(textutils.serialiseJSON(turtles))
         end
