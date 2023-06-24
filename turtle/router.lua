@@ -21,10 +21,12 @@ local function checkActive()
 
         debug(difference, 'info')
 
-        if not (difference > 0.020) then
+        if (difference > 0.0005765655517) then
             turtles[k].active = false
             debug('The turtle '..v.id..' has gone inactive', 'err')
         else
+            debug('The turtle '..v.id..' is still active', 'succ')
+            turtles[k].active = true
             activeClient = activeClient + 1
         end
     end
@@ -36,15 +38,18 @@ local function checkActive()
 
         debug(difference, 'info')
 
-        if not (difference > 0.020) then
+        if (difference > 0.0005765655517) then
             masters[k].active = false
             debug('The master '..v.id..' has gone inactive', 'err')
-            debug('The turtle '..v.id..' has gone inactive', 'err')
         else
+            debug('The master '..v.id..' is still active', 'succ')
+            masters[k].active = true
             activeClient = activeClient + 1
         end
     end
 
+    debug('Amount of turtles' ..#turtles, 'info')
+    debug('Amount of masters' ..#masters, 'info')
     local totalClients = #turtles + #masters
     debug('Active clients: '..activeClient.. '/'..totalClients)
 end
