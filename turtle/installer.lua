@@ -13,7 +13,8 @@ local downloadUrls = {
   TURTLE = baseUrl .. "/" .. folderPath .. "/turtle.lua",
   UPDATER = baseUrl .. "/" .. folderPath .. "/updater.lua",
   CONFIG = baseUrl .. "/" .. folderPath .. "/config.lua",
-  STATUS = baseUrl .. "/" .. folderPath .. "/status.lua"
+  STATUS = baseUrl .. "/" .. folderPath .. "/status.lua",
+  DEBUGGER = baseUrl .. "/" .. folderPath .. "/debugger.lua"
 }
 
 shell.run('set motd.enabled false')
@@ -81,6 +82,7 @@ if downloadUrls[string.upper(fileType)] then
   downloadFile(downloadUrls['UPDATER'], '/PJ-Invade/updater.lua')
   downloadFile(downloadUrls['CONFIG'], '/PJ-Invade/config.lua')
   downloadFile(downloadUrls['STATUS'], '/PJ-Invade/status.lua')
+  downloadFile(downloadUrls['DEBUGGER'], '/PJ-Invade/debugger.lua')
   createStartupScript(filePath)
 
   local int = 0

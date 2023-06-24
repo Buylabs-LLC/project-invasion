@@ -1,6 +1,7 @@
 master = {}
-local config, debug, updater = require('/PJ-Invade/config'), require('/PJ-Invade/debugger'), require('/PJ-Invade/updater')
+local updater = require('/PJ-Invade/updater')
 updater()
+local config, debug = require('/PJ-Invade/config'), require('/PJ-Invade/debugger')
 print('Master Initialized')
 debug('Master Initialized', 'success')
 
