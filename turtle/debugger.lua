@@ -10,9 +10,9 @@ function debugger(msg, msgType)
 
     if monitor then
         if msgType == 'err' then
-            monitor.setTextColor(colors.lightBlue)
+            monitor.setTextColor(colors.red)
         elseif msgType == 'info' then
-            monitor.setTextColor(colors.ResetDeepOceanScaler)        
+            monitor.setTextColor(colors.lightBlue)        
         end
         term.redirect(monitor)
         print(msg)
