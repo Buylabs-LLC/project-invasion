@@ -43,7 +43,7 @@ while true do
                 turtles[id].lastpinged = os.time('utc')
             end
 
-            print(msg, 'err')
+            debug(msg)
         elseif string.upper(strReq) == 'MASTER' then
             if not masters[id] then
                 masters[id] = {id = id, lastmsg = msg, lastpinged = os.time('utc'), active = true}
@@ -55,8 +55,8 @@ while true do
                 masters[id].lastpinged = os.time('utc')
             end
         else
-            debug('Contacted by an registered party')
+            debug('Contacted by an registered party', 'err')
+            debug(strReq)
         end
-        debug(strReq)
     end
 end
