@@ -1,11 +1,12 @@
 -- Configuration
 local debug = require('/PJ-Invade/debugger')
-local repoOwner = "Buylabs-LLC"
-local repoName = "project-invasion"
-local branch = "main" -- Replace with the desired branch name
-local computerPath = "/PJ-Invade" -- Replace with the path to your computer's folder
-local repoDirectory = "turtle" -- Replace with the path to the directory in the GitHub repository
-local authToken = "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" -- Replace with your GitHub personal access token
+local config = require('/PJ-Invade/config')
+local repoOwner = config.gitInfo.repoOwner
+local repoName = config.gitInfo.repoName
+local branch = config.gitInfo.branch -- Replace with the desired branch name
+local computerPath = config.computerPath -- Replace with the path to your computer's folder
+local repoDirectory = config.gitInfo.lua -- Replace with the path to the directory in the GitHub repository
+local authToken = config.gitInfo.authToken -- Replace with your GitHub personal access token
 
 -- Function to check for updates
 function checkForUpdates()
