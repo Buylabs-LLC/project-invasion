@@ -50,7 +50,7 @@ while true do
                 masters[id] = {id = id, lastmsg = msg, lastpinged = os.time('utc'), active = true}
                 debug('Added a new master to the local db', 'succ')
                 debug('ID: '.. id)
-                debug('msg: '.. msg)
+                debug('msg: '.. textutils.serialiseJSON(msg))
             else
                 masters[id].lastmsg = msg
                 masters[id].lastpinged = os.time('utc')
