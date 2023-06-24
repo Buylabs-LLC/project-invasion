@@ -10,7 +10,7 @@ rednet.host(config.network, 'main-router')
 print('Router Initialized')
 debug('Router Initialized', 'success')
 
-function checkActive()
+local function checkActive()
     for k,v in ipairs(turtles) do
         local currentTime = os.time('utc')
         local lastpinged = turtles[k].lastpinged
@@ -18,6 +18,15 @@ function checkActive()
 
         if not difference > 20 then
             turtles[k].active = false
+        end
+    end
+    for k,v in ipairs(masters) do
+        local currentTime = os.time('utc')
+        local lastpinged = v.lastpinged
+        local difference = (currentTime - lastpinged) % 1000
+
+        if not difference > 20 then
+            masters[k].active = false
         end
     end
 end
@@ -32,6 +41,7 @@ local id, msg, strReq
 while true do
     updater()
     -- status()
+    checkActive()
 
     id, msg, strReq = rednet.receive()
     if msg then
