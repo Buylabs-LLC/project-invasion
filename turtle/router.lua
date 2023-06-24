@@ -9,10 +9,22 @@ peripheral.find("modem", rednet.open)
 rednet.host(config.network, 'main-router')
 print('Router Initialized')
 
+function checkTurtles()
+    for k, v in pairs(turtles) do
+        local isUp = rednet.send(v.id, 'Checkup')
+        if not isUp then
+            turtles[k].active = false
+        end
+    end
+
+    print(textutils.serialiseJSON(turtles))
+end
+
 local id, msg, strReq
 while true do
     updater()
     -- status()
+    checkTurtles()
 
     id, msg, strReq = rednet.receive()
     if msg then
