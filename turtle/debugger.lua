@@ -4,7 +4,7 @@ function debugger(msg)
     print(msg)
     print(monitors)
 
-    for _,monitor in ipairs(monitors) do
+    for _,monitor in pairs(monitors) do
         monitor.write(msg)
     end
 end
