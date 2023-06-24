@@ -5,9 +5,13 @@ end)
 
 function debugger(msg)
     local monitor = peripheral.find('monitor')
-    term.redirect(monitor)
-    print(msg)
-    -- term.restore()
+
+    if monitor then
+        term.redirect(monitor)
+        print(msg)
+    else
+        print(msg)
+    end
 end
 
 return debugger

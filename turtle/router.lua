@@ -37,8 +37,7 @@ while true do
         end
         turtles[id].lastmsg = msg
         turtles[id].lastpinged = os.time('utc')
-        debug('last pinged')
-        debug(turtles[id].lastpinged)
-        debug(textutils.formatTime(turtles[id].lastpinged))
+
+        debug(strReq)
     end
 end
