@@ -2,7 +2,7 @@ function debugger(msg)
     local monitors = peripheral.find('monitor')
 
     print(msg)
-    print(monitors)
+    print(textutils.serialiseJSON(monitors))
 
     for _, monitor in pairs(monitors) do
         monitor.write("Hello")
