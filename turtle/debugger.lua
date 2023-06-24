@@ -17,6 +17,8 @@ function debugger(msg, msgType)
             monitor.setTextColor(colors.green)
         elseif msgType == 'table' then
             monitor.setTextColor(colors.pink)
+        elseif msgType == 'update' then
+            monitor.setTextColor(colors.lime)
         else
             monitor.setTextColor(colors.lightBlue)
         end
@@ -27,6 +29,8 @@ function debugger(msg, msgType)
 
 
         monitor.setTextColor(colors.lightBlue)
+    elseif msgType == 'update' then
+        print(msg)
     end
 end
 
