@@ -47,7 +47,7 @@ local function createStartupScript(filePath)
     local restartIn = 5 -- Time in seconds
 
     repeat
-      print('Starting everything in '..restartIn - int..' seconds...')
+      print('Starting in '..restartIn - int..' seconds...')
       os.sleep(1)
       int = int + 1
     until int == restartIn
