@@ -1,12 +1,14 @@
 local updater = require('/PJ-Invade/updater')
 updater()
 local config, debug = require('/PJ-Invade/config'), require('/PJ-Invade/debugger')
+local router, firstCheck, connectDown = rednet.lookup(config.network, 'main-router'), false, false
+peripheral.find("modem", rednet.open)
 print('Master Initialized') debug('Master Initialized', 'success')
 
-peripheral.find("modem", rednet.open)
 
 
 local function checkIfRouterIsRunning()
+    router = rednet.lookup(config.network, 'main-router')
     if router then
         if not firstCheck then
             debug('Successfully established a connection to the main router!', 'success')

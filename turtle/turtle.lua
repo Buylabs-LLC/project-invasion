@@ -10,6 +10,7 @@ debug('Turtle Initialized', 'success')
 peripheral.find("modem", rednet.open)
 
 local function checkIfRouterIsRunning()
+    router = rednet.lookup(config.network, 'main-router')
     if router then
         if not firstCheck then
             debug('Successfully established a connection to the main router!', 'success')
