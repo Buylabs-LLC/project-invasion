@@ -3,12 +3,12 @@ peripheral.find('monitor', function(name, monitor)
     return true
 end)
 
-function debugger(msg)
-    local monitor = peripheral.find('monitor')
+local monitor = peripheral.find('monitor')
+term.redirect(monitor)
 
-    term.redirect(peripheral.wrap(monitor))
+function debugger(msg)
     print(msg)
-    term.restore()
+    -- term.restore()
 end
 
 return debugger
