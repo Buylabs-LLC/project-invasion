@@ -9,6 +9,7 @@ local turtles = {}
 peripheral.find("modem", rednet.open)
 rednet.host(config.network, 'main-router')
 debug('Router Initialized')
+print('Router Initialized')
 
 function checkActive()
     for k,v in ipairs(turtles) do
