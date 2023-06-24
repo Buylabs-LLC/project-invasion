@@ -12,7 +12,9 @@ function debugger(msg, msgType)
         if msgType == 'err' or msgType == 'error' then
             monitor.setTextColor(colors.red)
         elseif msgType == 'info' then
-            monitor.setTextColor(colors.lightBlue)        
+            monitor.setTextColor(colors.lightBlue)
+        elseif msgType == 'succ' or msgType == 'success' then
+            monitor.setTextColor(colors.green)
         end
         term.redirect(monitor)
         print(msg)

@@ -3,6 +3,7 @@ local config, debug, updater = require('/PJ-Invade/config'), require('/PJ-Invade
 -- local status = require('/PJ-Invade/status')
 local router, firstCheck, connectDown = rednet.lookup(config.network, 'main-router'), false, false
 updater()
+print('Turtle Initialized')
 
 peripheral.find("modem", rednet.open)
 
