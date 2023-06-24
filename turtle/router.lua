@@ -25,5 +25,6 @@ while true do
         turtles[id].lastpinged = os.time('utc')
         print('last pinged')
         print(turtles[id].lastpinged)
+        print(textutils.formatTime(turtles[id].lastpinged))
     end
 end
