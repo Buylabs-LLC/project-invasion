@@ -1,7 +1,12 @@
 function debugger(msg)
-    local monitors = peripheral.find('monitor')
+    local monitor = peripheral.find('monitor')
+    local log = io.open('log', "w+")
 
-    monitors.write(msg)
+    file:white(msg)
+    file:close()
+    
+
+    monitor.write(msg)
 end
 
 return debugger
