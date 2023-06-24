@@ -12,6 +12,7 @@ print('Router Initialized')
 function checkTurtles()
     for k, v in pairs(turtles) do
         local isUp = rednet.send(v.id, 'Checkup')
+        print(isUp)
         if not isUp then
             turtles[k].active = false
         end
