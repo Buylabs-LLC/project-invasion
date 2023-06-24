@@ -1,7 +1,7 @@
 function debugger(msg)
     local monitor = peripheral.find('monitor')
 
-    monitor.write(msg.. '\n')
+    monitor.writeln(msg)
 end
 
 return debugger
