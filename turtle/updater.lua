@@ -1,4 +1,5 @@
 -- Configuration
+local debug = require('/PJ-Invade/debugger')
 local repoOwner = "Buylabs-LLC"
 local repoName = "project-invasion"
 local branch = "main" -- Replace with the desired branch name
@@ -43,7 +44,7 @@ function checkForUpdates()
         file:write(fileContent)
         file:close()
 
-        print("Updated: " .. fileName)
+        debug("Updated: " .. fileName, 'success')
       end
     end
 
@@ -52,7 +53,7 @@ function checkForUpdates()
     file:write(latestCommitHash)
     file:close()
 
-    print("Update complete, now rebooting for the changed to take effect")
+    debug("Update complete, now rebooting for the changed to take effect", 'success')
     os.reboot()
   end
 end
