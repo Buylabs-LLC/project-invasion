@@ -11,12 +11,12 @@ function debugger(msg, msgType)
     if monitor then
         if msgType == 'err' then
             local rgbClr = colors.packRGB(0.181, 0.019, 0.07)
-            local clr = colors.fromBlit(rgbClr)
-            monitor.setTextColor(clr)
+            -- local clr = colors.fromBlit(rgbClr)
+            monitor.setTextColor(rgbClr)
         elseif msgType == 'info' then
             local rgbClr = colors.packRGB(0.030, 0.105, 0.235)
-            local clr = colors.fromBlit(rgbClr)
-            monitor.setTextColor(clr)        
+            -- local clr = colors.fromBlit(rgbClr)
+            monitor.setTextColor(rgbClr)        
         end
         term.redirect(monitor)
         print(msg)
