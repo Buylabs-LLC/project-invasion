@@ -18,6 +18,7 @@ local function checkActive()
 
         if not difference > 20 then
             turtles[k].active = false
+            debug('The turtle '..v.id..' has gone inactive', 'err')
         end
     end
     for k,v in ipairs(masters) do
@@ -27,7 +28,9 @@ local function checkActive()
 
         if not difference > 20 then
             masters[k].active = false
+            debug('The master '..v.id..' has gone inactive', 'err')
         end
+
     end
 end
 
