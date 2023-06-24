@@ -1,15 +1,16 @@
 local config = require('/pj-invade/config')
+local socket = http.websocket(config['WSS'])
 
 local function handleReceivedCode(code)
   -- Execute the received code
   local success, err = pcall(load(code))
+  print(code)
   if not success then
     print("Error executing code:", err)
   end
 end
 
 local function setupWebSocketConnection()
-  local socket = http.websocket(config['WSS'])
 
   socket.onConnected = function()
     print("WebSocket connection established.")
