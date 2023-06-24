@@ -1,5 +1,6 @@
 local config = require('/PJ-Invade/config')
 local updater = require('/PJ-Invade/updater')
+local debug = require('/PJ-Invade/debug')
 local turtles = {}
 -- local status = require('/PJ-Invade/status')
 updater()
@@ -7,7 +8,7 @@ updater()
 -- Initialize router with network
 peripheral.find("modem", rednet.open)
 rednet.host(config.network, 'main-router')
-print('Router Initialized')
+debug('Router Initialized')
 
 function checkActive()
     for k,v in ipairs(turtles) do
@@ -30,13 +31,13 @@ while true do
     if msg then
         if not turtles[id] then
             turtles[id] = {id = id, lastmsg = msg, lastpinged = os.time('utc'), active = true}
-            print('Added a new turtle to the local db')
-            print(textutils.serialiseJSON(turtles))
+            debug('Added a new turtle to the local db')
+            debug(textutils.serialiseJSON(turtles))
         end
         turtles[id].lastmsg = msg
         turtles[id].lastpinged = os.time('utc')
-        print('last pinged')
-        print(turtles[id].lastpinged)
-        print(textutils.formatTime(turtles[id].lastpinged))
+        debug('last pinged')
+        debug(turtles[id].lastpinged)
+        debug(textutils.formatTime(turtles[id].lastpinged))
     end
 end
