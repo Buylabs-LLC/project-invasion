@@ -1,6 +1,6 @@
 local config = require('/PJ-Invade/config')
 local updater = require('/PJ-Invade/updater')
-local turtle = {}
+local turtles = {}
 -- local status = require('/PJ-Invade/status')
 updater()
 
@@ -17,9 +17,10 @@ while true do
 
     id, msg, strReq = rednet.receive()
     if msg then
-        if not turtle[id] then
-            turtle[id] = true
+        if not turtles[id] then
+            turtles[id] = true
             print('Added a new turtle to the local db')
+            print(textutils.serialiseJSON(turtles))
         end
         print('MSG')
         print(msg)
