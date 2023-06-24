@@ -16,6 +16,8 @@ local downloadUrls = {
   STATUS = baseUrl .. "/" .. folderPath .. "/status.lua"
 }
 
+shell.run('set motd.enabled false')
+
 -- Rest of the code remains the same...
 
 -- Function to download a file from the given URL
