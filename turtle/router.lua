@@ -12,7 +12,9 @@ debug('Router Initialized', 'success')
 
 local function checkActive()
     debug('Activity Checking Initiated', 'info')
-    for k,v in ipairs(turtles) do
+    local activeClient = 0
+    for k,v in pairs(turtles) do
+        debug('Checking active Turtles', 'info')
         local currentTime = os.time('utc')
         local lastpinged = turtles[k].lastpinged
         local difference = (currentTime - lastpinged) % 1000
@@ -22,21 +24,29 @@ local function checkActive()
         if not difference > 0.020 then
             turtles[k].active = false
             debug('The turtle '..v.id..' has gone inactive', 'err')
+        else
+            activeClient = activeClient + 1
         end
     end
-    for k,v in ipairs(masters) do
+    for k,v in pairs(masters) do
+        debug('Checking active Turtles', 'info')
         local currentTime = os.time('utc')
         local lastpinged = v.lastpinged
         local difference = (currentTime - lastpinged) % 1000
 
         debug(difference, 'info')
-        
+
         if not difference > 0.020 then
             masters[k].active = false
             debug('The master '..v.id..' has gone inactive', 'err')
+            debug('The turtle '..v.id..' has gone inactive', 'err')
+        else
+            activeClient = activeClient + 1
         end
-
     end
+
+    local totalClients = #turtles + #masters
+    debug('Active clients: '..activeClient.. '/'..totalClients)
 end
 
 contact.master = function(fnc)
