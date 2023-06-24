@@ -13,7 +13,9 @@ debug('Router Initialized', 'success')
 local function checkActive()
     debug('Activity Checking Initiated', 'info')
     local activeClient = 0
+    local totalClients = 0
     for k,v in pairs(turtles) do
+        totalClients = totalClients + 1
         debug('Checking active Turtles', 'info')
         local currentTime = os.time('utc')
         local lastpinged = turtles[k].lastpinged
@@ -31,6 +33,7 @@ local function checkActive()
         end
     end
     for k,v in pairs(masters) do
+        totalClients = totalClients + 1
         debug('Checking active Turtles', 'info')
         local currentTime = os.time('utc')
         local lastpinged = v.lastpinged
@@ -47,10 +50,6 @@ local function checkActive()
             activeClient = activeClient + 1
         end
     end
-
-    debug('Amount of turtles' ..#turtles, 'info')
-    debug('Amount of masters' ..#masters, 'info')
-    local totalClients = #turtles + #masters
     debug('Active clients: '..activeClient.. '/'..totalClients)
 end
 
