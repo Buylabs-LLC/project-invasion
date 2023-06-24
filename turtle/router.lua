@@ -57,6 +57,9 @@ end
 
 local id, msg, strReq
 while true do
+
+    debug('New set of data', 'PURPLE', true)
+
     updater()
     -- status()
     checkActive()
