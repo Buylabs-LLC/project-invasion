@@ -1,19 +1,13 @@
--- does not crash
-
 turtle = {}
-local tId = 0
 local config = require('/PJ-Invade/config')
 local updater = require('/PJ-Invade/updater')
 -- local status = require('/PJ-Invade/status')
-local routerStatus = 'Waiting for response'
-local router = rednet.lookup(config.network, 'main-router')
+local routerStatus, router, firstCheck, connectDown = 'Waiting for response', rednet.lookup(config.network, 'main-router'), false, false
 updater()
 
 peripheral.find("modem", rednet.open)
 
 local function checkIfRouterIsRunning()
-    local firstCheck = false
-    local connectDown = false
     if router then
         if not firstCheck then
             routerStatus = 'Successfully established a connection to the main router!'
@@ -45,5 +39,6 @@ while true do
     if router then
         rednet.send(router, 'Hi!')
     end
+
     -- status()
 end
