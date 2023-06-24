@@ -13,7 +13,6 @@ local id, msg, strReq
 while true do
     updater()
     -- status()
-    checkTurtles()
 
     id, msg, strReq = rednet.receive()
     if msg then
