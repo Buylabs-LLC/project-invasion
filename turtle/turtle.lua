@@ -4,6 +4,7 @@ local config, debug, updater = require('/PJ-Invade/config'), require('/PJ-Invade
 local router, firstCheck, connectDown = rednet.lookup(config.network, 'main-router'), false, false
 updater()
 print('Turtle Initialized')
+debug('Turtle Initialized', 'success')
 
 peripheral.find("modem", rednet.open)
 
@@ -25,7 +26,7 @@ local function checkIfRouterIsRunning()
 end
 
 turtle.getInven = function()
- 
+
 end
 
 while true do
