@@ -42,6 +42,8 @@ while true do
 
     os.sleep(10)
 
-    rednet.send(router, 'Hi!')
+    if router then
+        rednet.send(router, 'Hi!')
+    end
     -- status()
 end
