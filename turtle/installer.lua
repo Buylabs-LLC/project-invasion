@@ -45,6 +45,10 @@ local function createStartupScript(filePath)
 
     local int = 0
     local restartIn = 5 -- Time in seconds
+    peripheral.find('monitor', function(name, monitor)
+      monitor.clear()
+      return true
+    end)
 
     repeat
       print('Starting in '..restartIn - int..' seconds...')
