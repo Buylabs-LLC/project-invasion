@@ -9,8 +9,6 @@ function debugger(msg)
     if monitor then
         term.redirect(monitor)
         print(msg)
-    else
-        print(msg)
     end
 end
 
