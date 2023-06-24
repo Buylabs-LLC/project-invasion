@@ -18,6 +18,7 @@ local function checkIfRouterIsRunning()
             print('Connection to the router has been restored!')
         end
     else
+        router = rednet.lookup(config.network, 'main-router')
         print('Failed to establish a connection to the main router!')
         connectDown = true
     end
