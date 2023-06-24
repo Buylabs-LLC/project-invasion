@@ -21,8 +21,6 @@ local function checkActive()
         local lastpinged = turtles[k].lastpinged
         local difference = currentTime - lastpinged
 
-        debug(difference, 'info')
-
         if (difference > 0.0005765655517) then
             turtles[k].active = false
             debug('The turtle '..v.id..' has gone inactive', 'err')
@@ -41,7 +39,7 @@ local function checkActive()
 
         debug(difference, 'info')
 
-        if (difference > 0.0005765655517) then
+        if (difference > 0.0010765655517) then
             masters[k].active = false
             debug('The master '..v.id..' has gone inactive', 'err')
         else
@@ -75,14 +73,10 @@ while true do
                 turtles[id].lastmsg = msg
                 turtles[id].lastpinged = os.time('utc')
             end
-
-            debug(textutils.serialiseJSON(msg), 'table')
         elseif string.upper(strReq) == 'MASTER' then
             if not masters[id] then
                 masters[id] = {id = id, lastmsg = msg, lastpinged = os.time('utc'), active = true}
                 debug('Added a new master to the local db', 'succ')
-                debug('ID: '.. id)
-                debug('msg: '.. textutils.serialiseJSON(msg))
             else
                 masters[id].lastmsg = msg
                 masters[id].lastpinged = os.time('utc')
