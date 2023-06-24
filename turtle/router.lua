@@ -17,12 +17,12 @@ while true do
     id, msg, strReq = rednet.receive()
     if msg then
         if not turtles[id] then
-            turtles[id] = {id = id, lastmsg = msg, lastpinged = os.time('gmt')}
+            turtles[id] = {id = id, lastmsg = msg, lastpinged = os.time('utc')}
             print('Added a new turtle to the local db')
             print(textutils.serialiseJSON(turtles))
         end
         turtles[id].lastmsg = msg
-        turtles[id].lastpinged = os.time('gmt')
+        turtles[id].lastpinged = os.time('utc')
         print('last pinged')
         print(turtles[id].lastpinged)
     end
