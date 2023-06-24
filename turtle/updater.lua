@@ -45,7 +45,7 @@ function checkForUpdates()
         file:write(fileContent)
         file:close()
 
-        debug("Updated: " .. fileName, 'update')
+        print("Updated: " .. fileName, 'update')
       end
     end
 
@@ -54,7 +54,7 @@ function checkForUpdates()
     file:write(latestCommitHash)
     file:close()
 
-    debug("Update complete, now rebooting for the changed to take effect", 'update')
+    print("Update complete, now rebooting for the changed to take effect", 'update')
     os.reboot()
   end
 end

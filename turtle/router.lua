@@ -57,7 +57,7 @@ while true do
             end
         else
             debug('Contacted by an registered party', 'err')
-            debug(strReq)
+            debug(strReq, 'err')
         end
     end
 end
