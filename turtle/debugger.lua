@@ -3,8 +3,12 @@ peripheral.find('monitor', function(name, monitor)
     return true
 end)
 
-function debugger(msg, msgType)
-    msgType = string.upper(msgType) or 'INFO'
+function Debugger(msg, msgType)
+    if msgType then
+        msgType = string.upper(msgType)
+    else
+        msgType = 'INFO'
+    end
     local monitor = peripheral.find('monitor')
 
 
@@ -34,4 +38,4 @@ function debugger(msg, msgType)
     end
 end
 
-return debugger
+return Debugger
