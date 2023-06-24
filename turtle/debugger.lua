@@ -23,6 +23,8 @@ function Debugger(msg, msgType)
             monitor.setTextColor(colors.pink)
         elseif msgType == 'UPDATE' or msgType == 'LIME' then
             monitor.setTextColor(colors.lime)
+        elseif msgType == 'DNS' or msgType == 'BLUE' then
+            monitor.setTextColor(colors.blue)
         else
             monitor.setTextColor(colors.lightBlue)
         end

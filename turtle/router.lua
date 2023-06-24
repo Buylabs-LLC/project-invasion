@@ -55,6 +55,8 @@ while true do
                 masters[id].lastmsg = msg
                 masters[id].lastpinged = os.time('utc')
             end
+        elseif strReq == 'dns' then
+            debug('DNS Query recived by '..id, 'dns')
         else
             debug('Contacted by an registered party', 'err')
             debug(strReq, 'err')
