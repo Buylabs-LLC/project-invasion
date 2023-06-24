@@ -11,12 +11,13 @@ print('Router Initialized')
 debug('Router Initialized', 'success')
 
 local function checkActive()
+    debug('Activity Checking Initiated', 'info')
     for k,v in ipairs(turtles) do
         local currentTime = os.time('utc')
         local lastpinged = turtles[k].lastpinged
         local difference = (currentTime - lastpinged) % 1000
 
-        if not difference > 20 then
+        if not difference > 0.020 then
             turtles[k].active = false
             debug('The turtle '..v.id..' has gone inactive', 'err')
         end
@@ -26,7 +27,7 @@ local function checkActive()
         local lastpinged = v.lastpinged
         local difference = (currentTime - lastpinged) % 1000
 
-        if not difference > 20 then
+        if not difference > 0.020 then
             masters[k].active = false
             debug('The master '..v.id..' has gone inactive', 'err')
         end
