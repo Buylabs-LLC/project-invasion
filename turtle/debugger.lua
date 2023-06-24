@@ -4,20 +4,20 @@ peripheral.find('monitor', function(name, monitor)
 end)
 
 function debugger(msg, msgType)
-    msgType = msgType or 'info'
+    msgType = string.upper(msgType) or 'INFO'
     local monitor = peripheral.find('monitor')
 
 
     if monitor then
-        if msgType == 'err' or msgType == 'error' then
+        if msgType == 'ERR' or msgType == 'ERROR' or msgType == 'RED' then
             monitor.setTextColor(colors.red)
-        elseif msgType == 'info' then
+        elseif msgType == 'INFO' or msgType == 'INFORMATION' or msgType == 'LIGHTBLUE' then
             monitor.setTextColor(colors.lightBlue)
-        elseif msgType == 'succ' or msgType == 'success' then
+        elseif msgType == 'SUCC' or msgType == 'SUCCESS' or msgType == 'GREEN' then
             monitor.setTextColor(colors.green)
-        elseif msgType == 'table' then
+        elseif msgType == 'TABLE' or msgType == 'ARR' or msgType == 'PINK' then
             monitor.setTextColor(colors.pink)
-        elseif msgType == 'update' then
+        elseif msgType == 'UPDATE' or msgType == 'LIME' then
             monitor.setTextColor(colors.lime)
         else
             monitor.setTextColor(colors.lightBlue)
