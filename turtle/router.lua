@@ -29,6 +29,8 @@ local function checkActive()
         local lastpinged = v.lastpinged
         local difference = (currentTime - lastpinged) % 1000
 
+        debug(difference, 'info')
+        
         if not difference > 0.020 then
             masters[k].active = false
             debug('The master '..v.id..' has gone inactive', 'err')
