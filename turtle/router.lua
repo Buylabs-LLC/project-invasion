@@ -21,7 +21,7 @@ local function checkActive()
         local lastpinged = turtles[k].lastpinged
         local difference = currentTime - lastpinged
 
-        if (difference > 0.0005765655517) then
+        if (difference > 0.0010765655517) then
             turtles[k].active = false
             debug('The turtle '..v.id..' has gone inactive', 'err')
         else
@@ -36,8 +36,6 @@ local function checkActive()
         local currentTime = os.time('utc')
         local lastpinged = v.lastpinged
         local difference = currentTime - lastpinged
-
-        debug(difference, 'info')
 
         if (difference > 0.0010765655517) then
             masters[k].active = false

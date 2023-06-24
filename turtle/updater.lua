@@ -17,6 +17,8 @@ function checkForUpdates()
   }
   local response = http.get(apiUrl, headers)
   local commitData = textutils.unserializeJSON(response.readAll())
+  local commitName = commitData.commit.message
+  local commitor = commitData.commit.author
   local latestCommitHash = commitData.sha
 
   local currentCommitFile = computerPath .. "/current_commit.txt"
@@ -30,6 +32,9 @@ function checkForUpdates()
   end
 
   if latestCommitHash ~= lastCommit then
+    debug('New update found, returning the info of this update!', 'updateinfo')
+    debug('Message: '..commitName, 'updateinfo')
+    debug('Author: '..commitor, 'updateinfo')
     -- Update required
     local treeApiUrl = string.format("https://api.github.com/repos/%s/%s/contents/%s?ref=%s", repoOwner, repoName, repoDirectory, branch)
     local treeResponse = http.get(treeApiUrl, headers)
