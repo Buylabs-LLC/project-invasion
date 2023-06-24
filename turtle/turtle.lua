@@ -40,7 +40,7 @@ while true do
     checkIfRouterIsRunning()
     updater()
 
-    io.sleep(10)
+    os.sleep(10)
 
     rednet.send(router, 'Hi!')
     -- status()
