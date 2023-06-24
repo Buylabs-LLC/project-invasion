@@ -1,9 +1,10 @@
-master = {}
 local updater = require('/PJ-Invade/updater')
 updater()
 local config, debug = require('/PJ-Invade/config'), require('/PJ-Invade/debugger')
-print('Master Initialized')
-debug('Master Initialized', 'success')
+print('Master Initialized') debug('Master Initialized', 'success')
+
+peripheral.find("modem", rednet.open)
+
 
 local function checkIfRouterIsRunning()
     if router then
