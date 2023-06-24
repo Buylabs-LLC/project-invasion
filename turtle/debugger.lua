@@ -3,7 +3,7 @@ peripheral.find('monitor', function(name, monitor)
     return true
 end)
 
-function Debugger(msg, msgType, whiteBg)
+function Debugger(msg, msgType)
     if msgType then
         msgType = string.upper(msgType)
     else
@@ -30,9 +30,6 @@ function Debugger(msg, msgType, whiteBg)
             monitor.setTextColor(colors.lightBlue)
         end
 
-        if whiteBg == true then
-            monitor.setBackgroundColor(colors.white)
-        end
 
 
         term.redirect(monitor)
@@ -40,7 +37,6 @@ function Debugger(msg, msgType, whiteBg)
 
 
         monitor.setTextColor(colors.lightBlue)
-        monitor.setBackgroundColor(colors.black)
     elseif msgType == 'update' then
         print(msg)
     end
