@@ -7,7 +7,7 @@ local turtles, masters, contact = {}, {}, {}
 peripheral.find("modem", rednet.open)
 rednet.host(config.network, 'main-router')
 print('Router Initialized')
-debug('Router Initialized')
+debug('Router Initialized', 'success')
 
 function checkActive()
     for k,v in ipairs(turtles) do
@@ -37,7 +37,7 @@ while true do
         if string.upper(strReq) == 'TURTLE' then
             if not turtles[id] then
                 turtles[id] = {id = id, lastmsg = msg, lastpinged = os.time('utc'), active = true}
-                debug('Added a new turtle to the local db')
+                debug('Added a new turtle to the local db', 'success')
             else
                 turtles[id].lastmsg = msg
                 turtles[id].lastpinged = os.time('utc')
@@ -47,7 +47,7 @@ while true do
         elseif string.upper(strReq) == 'MASTER' then
             if not masters[id] then
                 masters[id] = {id = id, lastmsg = msg, lastpinged = os.time('utc'), active = true}
-                debug('Added a new master to the local db')
+                debug('Added a new master to the local db', 'succ')
                 debug('ID: '.. id)
                 debug('msg: '.. msg)
             else
