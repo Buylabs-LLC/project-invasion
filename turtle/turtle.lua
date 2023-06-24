@@ -35,7 +35,7 @@ while true do
     os.sleep(10)
 
     if router then
-        rednet.send(router, 'contact.master("api.send(\'Test\')")', 'function')
+        rednet.send(router, 'contact.master("api.send(\'Test\')")', 'turtle')
     end
 
     -- status()

@@ -31,7 +31,7 @@ while true do
 
     id, msg, strReq = rednet.receive()
     if msg then
-        if strReq == 'turtle' then
+        if string.upper(strReq) == 'TURTLE' then
             if not turtles[id] then
                 turtles[id] = {id = id, lastmsg = msg, lastpinged = os.time('utc'), active = true}
                 debug('Added a new turtle to the local db')
@@ -41,7 +41,7 @@ while true do
                 turtles[id].lastmsg = msg
                 turtles[id].lastpinged = os.time('utc')
             end
-        elseif strReq == 'master' then
+        elseif string.upper(strReq) == 'MASTER' then
             if not masters[id] then
                 masters[id] = {id = id, lastmsg = msg, lastpinged = os.time('utc'), active = true}
                 debug('Added a new master to the local db')
