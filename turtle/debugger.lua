@@ -20,8 +20,13 @@ function debugger(msg, msgType)
         else
             monitor.setTextColor(colors.lightBlue)
         end
+
+
         term.redirect(monitor)
         print(msg)
+
+
+        monitor.setTextColor(colors.lightBlue)
     end
 end
 
