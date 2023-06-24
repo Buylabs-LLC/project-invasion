@@ -10,12 +10,12 @@ peripheral.find("modem", rednet.open)
 local function checkIfRouterIsRunning()
     if router then
         if not firstCheck then
-            debug('Successfully established a connection to the main router!')
+            debug('Successfully established a connection to the main router!', 'success')
             connectDown = false
             firstCheck = true
         elseif connectDown then
             connectDown = false
-            debug('Connection to the router has been restored!')
+            debug('Connection to the router has been restored!', 'success')
         end
     else
         router = rednet.lookup(config.network, 'main-router')
