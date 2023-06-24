@@ -43,7 +43,7 @@ while true do
                 turtles[id].lastpinged = os.time('utc')
             end
 
-            print(msg)
+            print(msg, 'err')
         elseif string.upper(strReq) == 'MASTER' then
             if not masters[id] then
                 masters[id] = {id = id, lastmsg = msg, lastpinged = os.time('utc'), active = true}

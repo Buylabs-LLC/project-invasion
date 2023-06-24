@@ -9,7 +9,7 @@ function debugger(msg, msgType)
 
 
     if monitor then
-        if msgType == 'err' then
+        if msgType == 'err' or msgType == 'error' then
             monitor.setTextColor(colors.red)
         elseif msgType == 'info' then
             monitor.setTextColor(colors.lightBlue)        
