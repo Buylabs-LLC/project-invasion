@@ -35,7 +35,8 @@ while true do
             if not turtles[id] then
                 turtles[id] = {id = id, lastmsg = msg, lastpinged = os.time('utc'), active = true}
                 debug('Added a new turtle to the local db')
-                debug(textutils.serialiseJSON(turtles))
+                debug('ID: '.. id)
+                debug('msg: '.. msg)
             else
                 turtles[id].lastmsg = msg
                 turtles[id].lastpinged = os.time('utc')
@@ -44,11 +45,14 @@ while true do
             if not masters[id] then
                 masters[id] = {id = id, lastmsg = msg, lastpinged = os.time('utc'), active = true}
                 debug('Added a new master to the local db')
-                debug(textutils.serialiseJSON(masters))
+                debug('ID: '.. id)
+                debug('msg: '.. msg)
             else
                 masters[id].lastmsg = msg
                 masters[id].lastpinged = os.time('utc')
             end
+        else
+            debug('Contacted by an registered party')
         end
         debug(strReq)
     end
