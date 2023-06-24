@@ -15,16 +15,12 @@ local id, msg, strReq
 while true do
     updater()
     -- status()
-    
-    print('Yes, i do get ran!')
-    
+
     id, msg, strReq = rednet.receive()
     if msg then
         print('ID')
         print(id)
         print('MSG')
         print(textutils.serialiseJSON(msg))
-        print('strReq')
-        print(strReq)
     end
 end

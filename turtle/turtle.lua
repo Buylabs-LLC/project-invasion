@@ -6,7 +6,6 @@ local config = require('/PJ-Invade/config')
 local updater = require('/PJ-Invade/updater')
 -- local status = require('/PJ-Invade/status')
 local routerStatus = 'Waiting for response'
-local network = rednet.lookup(config.network)
 local router = rednet.lookup(config.network, 'main-router')
 updater()
 
@@ -41,6 +40,8 @@ while true do
     checkIfRouterIsRunning()
     updater()
 
-    rednet.send(7, 'Yes, I am a turle, no I am not doing shit')
+    io.sleep(10)
+
+    rednet.send(router, 'Hi!')
     -- status()
 end
