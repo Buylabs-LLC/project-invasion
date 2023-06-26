@@ -97,9 +97,9 @@ contact.master = function(fnc)
 end
 
 while true do
-    sleep(1)
+    sleep(0)
     -- parallel.waitForAll(updater, checkActive, checkForResponse)
     updater()
     checkActive()
-    parallel.waitForAll(checkForResponse)
+    checkForResponse()
 end
