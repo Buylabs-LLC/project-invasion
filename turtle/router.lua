@@ -4,49 +4,57 @@ updater()
 local config, debug = require('/PJ-Invade/config'), require('/PJ-Invade/debugger')
 local turtles, masters, contact = {}, {}, {}
 
-local activeClient, totalClients = 0, 0
-
 -- Initialize router with network
 peripheral.find("modem", rednet.open)
 rednet.host(config.network, 'main-router')
 print('Router Initialized')
 debug('Router Initialized', 'success')
 
-
-
-local function activityHandler(table, key, value, name)
-    local currentTime = os.time('utc')
-    local lastpinged = value.lastpinged
-    local difference = currentTime - lastpinged
-    if (difference > 0.0010765655517) then
-        table[key].inactitity = value.inactitity + 1
-        if (table[key].inactitity >= 2) then
-            debug('The '..name..' '..value.id..' has gone inactive', 'err')
-            table[key].active = false
-            debug('Releasing the data of '..name..' '..value.id, 'info')
-            table[key] = nil
-        end
-    else
-        debug('The master '..value.id..' is still active', 'succ')
-        table[key].active = true
-        activeClient = activeClient + 1
-    end
-end
-
 local function checkActive()
-    activeClient, totalClients = 0, 0
     debug('Activity Checking Initiated', 'info')
+    local activeClient = 0
+    local totalClients = 0
     for k,v in pairs(turtles) do
         totalClients = totalClients + 1
         debug('Checking active Turtles', 'info')
+        local currentTime = os.time('utc')
+        local lastpinged = turtles[k].lastpinged
+        local difference = currentTime - lastpinged
 
-        activityHandler(masters, k, v, 'master')
+        if (difference > 0.0010765655517) then
+            turtles[k].inactitity = v.inactitity + 1
+            if (turtles[k].inactitity >= 2) then
+                debug('The turtle '..v.id..' has gone inactive', 'err')
+                turtles[k].active = false
+                debug('Releasing the data of turtle '..v.id, 'info')
+                turtles[k] = nil
+            end
+        else
+            debug('The turtle '..v.id..' is still active', 'succ')
+            turtles[k].active = true
+            activeClient = activeClient + 1
+        end
     end
     for k,v in pairs(masters) do
         totalClients = totalClients + 1
         debug('Checking active Masters', 'info')
+        local currentTime = os.time('utc')
+        local lastpinged = v.lastpinged
+        local difference = currentTime - lastpinged
 
-        activityHandler(masters, k, v, 'master')
+        if (difference > 0.0010765655517) then
+            masters[k].inactitity = v.inactitity + 1
+            if (masters[k].inactitity >= 2) then
+                debug('The master '..v.id..' has gone inactive', 'err')
+                masters[k].active = false
+                debug('Releasing the data of master '..v.id, 'info')
+                masters[k] = nil
+            end
+        else
+            debug('The master '..v.id..' is still active', 'succ')
+            masters[k].active = true
+            activeClient = activeClient + 1
+        end
     end
     debug('Active clients: '..activeClient.. '/'..totalClients)
 end
