@@ -58,11 +58,13 @@ local function checkActive()
 
             if (difference > 0.0010765655517) then
                 turtles[k].inactitity = v.inactitity + 1
-                if (turtles[k].inactitity >= 3) then
+                if (turtles[k].inactitity >= 10) then
                     debug('The turtle '..v.id..' has gone inactive', 'err')
                     turtles[k].active = false
                     debug('Releasing the data of turtle '..v.id, 'info')
                     turtles[k] = nil
+                else
+                    activeClient = activeClient + 1
                 end
             else
                 debug('The turtle '..v.id..' is still active', 'succ')
@@ -79,11 +81,13 @@ local function checkActive()
 
             if (difference > 0.0010765655517) then
                 masters[k].inactitity = v.inactitity + 1
-                if (masters[k].inactitity >= 3) then
+                if (masters[k].inactitity >= 10) then
                     debug('The master '..v.id..' has gone inactive', 'err')
                     masters[k].active = false
                     debug('Releasing the data of master '..v.id, 'info')
                     masters[k] = nil
+                else
+                    activeClient = activeClient + 1
                 end
             else
                 debug('The master '..v.id..' is still active', 'succ')
