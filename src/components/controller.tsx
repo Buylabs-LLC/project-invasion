@@ -48,6 +48,7 @@ export default function Controller(){
 function DrawerChildren(){
     const [turtles, setTurtles]: any = useState()
     const [masters, setMasters]: any = useState()
+    const [selected, setSelected]: any = useState()
 
     useEffect(() =>{
         Axios.get('/api/turtles')
@@ -70,57 +71,43 @@ function DrawerChildren(){
         <>
             <Menu className="turtles">
                 <Menu.Title><FontAwesomeIcon icon={faUser} /></Menu.Title>
-                {
-                    turtles.map((turtle:{Name: string, Id: number, Action: string, LastSeen: string, Active: boolean}, index: number)=>{
-                        return (
-                            <Menu.Item key={index} className="hover-bordered">
-                                <a className='grid grid-cols-3 justify-items-center'>
-                                    <FontAwesomeIcon icon={faUser} />
-                                    <span>{turtle.Name}</span>
-                                    <span>{turtle.Action}</span>
-                                    <span>{turtle.Id}</span>
-                                    {turtle.Active ? <FontAwesomeIcon className='text-green-900' icon={faThumbsUp} />:<FontAwesomeIcon className='text-red-900' icon={faThumbsDown} />}
-                                </a>
-                            </Menu.Item>
-                        )
-                    })
-                }
+                <CreateDrawerChildren data={turtles} />
             </Menu>
             <div className="divider"></div>
             <Menu className="masters">
                 <Menu.Title><FontAwesomeIcon icon={faServer} /></Menu.Title>
-                {
-                    masters.map((master:{Name: string, Id: number, Action: string, LastSeen: string, Active: boolean}, index: number)=>{
-                        return (
-                            <Menu.Item key={index} className="hover-bordered">
-                                <a className='grid grid-cols-3 justify-items-center'>
-                                    <FontAwesomeIcon icon={faUser} />
-                                    <span>{master.Name}</span>
-                                    <span>{master.Action}</span>
-                                    <span>{master.Id}</span>
-                                    {master.Active ? <FontAwesomeIcon className='text-green-900' icon={faThumbsUp} />:<FontAwesomeIcon className='text-red-900' icon={faThumbsDown} />}
-                                </a>
-                            </Menu.Item>
-                        )
-                    })
-                }
+                <CreateDrawerChildren data={masters} selected={selected} setSelected={setSelected} />
             </Menu>
         </>
     )
 }
 
+function CreateDrawerChildren({data, selected, setSelected}: any){
+    return data.map((v:{Name: string, Id: number, Action: string, LastSeen: string, Active: boolean}, index: number)=>{
+        return (
+            <Menu.Item key={index} className="hover-bordered">
+                <a className='grid grid-cols-3 justify-items-center'>
+                    <FontAwesomeIcon icon={faUser} />
+                    <span>{v.Name}</span>
+                    <span>{v.Action}</span>
+                    <span>{v.Id}</span>
+                    {v.Active ? <FontAwesomeIcon className='text-green-600' icon={faThumbsUp} />:<FontAwesomeIcon className='text-red-600' icon={faThumbsDown} />}
+                </a>
+            </Menu.Item>
+        )
+    })
+}
+
 function NavChildren({Buttons}: NavChildren){
     return (
         <ButtonGroup className="flex flex-row">
-            {
-                Buttons.map((button: {action: any, icon: any, title: string}, index: number) =>{
-                    return (
-                        <Button key={index} onClick={button.action} title={button.title}>
-                            <FontAwesomeIcon icon={button.icon} />
-                        </Button>
-                    )
-                })
-            }
+            {Buttons.map((button: {action: any, icon: any, title: string}, index: number) =>{
+                return (
+                    <Button key={index} onClick={button.action} title={button.title}>
+                        <FontAwesomeIcon icon={button.icon} />
+                    </Button>
+                )
+            })}
         </ButtonGroup>
     )
 }
