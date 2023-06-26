@@ -18,6 +18,7 @@ debug('Router Initialized', 'success')
 local function checkForResponse()
     id, msg, strReq = rednet.receive()
     if msg then
+        debug('Recivied a message', 'info')
         if string.upper(strReq) == 'TURTLE' then
             if not turtles[id] then
                 turtles[id] = {id = id, lastmsg = msg, lastpinged = os.time('utc'), active = true, inactitity = 0}
