@@ -71,9 +71,9 @@ function DrawerChildren(){
             <Menu className="turtles">
                 <Menu.Title><FontAwesomeIcon icon={faUser} /></Menu.Title>
                 {
-                    turtles.map((turtle:{Name: string, Id: number, Action: string, LastSeen: string, Active: boolean})=>{
+                    turtles.map((turtle:{Name: string, Id: number, Action: string, LastSeen: string, Active: boolean}, index: number)=>{
                         return (
-                            <Menu.Item className="hover-bordered">
+                            <Menu.Item key={index} className="hover-bordered">
                                 <a className='grid grid-cols-3 justify-items-center'>
                                     <FontAwesomeIcon icon={faUser} />
                                     <span>{turtle.Name}</span>
@@ -90,9 +90,9 @@ function DrawerChildren(){
             <Menu className="masters">
                 <Menu.Title><FontAwesomeIcon icon={faServer} /></Menu.Title>
                 {
-                    masters.map((master:{Name: string, Id: number, Action: string, LastSeen: string, Active: boolean})=>{
+                    masters.map((master:{Name: string, Id: number, Action: string, LastSeen: string, Active: boolean}, index: number)=>{
                         return (
-                            <Menu.Item className="hover-bordered">
+                            <Menu.Item key={index} className="hover-bordered">
                                 <a className='grid grid-cols-3 justify-items-center'>
                                     <FontAwesomeIcon icon={faUser} />
                                     <span>{master.Name}</span>
@@ -113,9 +113,9 @@ function NavChildren({Buttons}: NavChildren){
     return (
         <ButtonGroup className="flex flex-row">
             {
-                Buttons.map((button: {action: any, icon: any}) =>{
+                Buttons.map((button: {action: any, icon: any}, index: number) =>{
                     return (
-                        <Button onClick={button.action}>
+                        <Button key={index} onClick={button.action}>
                             <FontAwesomeIcon icon={button.icon} />
                         </Button>
                     )
