@@ -99,5 +99,5 @@ end
 local function no_sleep() sleep(5) end
 
 while true do
-    parallel.waitForAny(no_sleep, updater, checkActive, checkForResponse)
+    parallel.waitForAny(no_sleep, checkActive, checkForResponse)
 end
