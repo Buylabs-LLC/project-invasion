@@ -98,4 +98,4 @@ end
 
 local function no_sleep() sleep(0) end
 
-waitForAny(no_sleep, updater, checkActive, checkForResponse)
+parallel.waitForAny(no_sleep, updater, checkActive, checkForResponse)
