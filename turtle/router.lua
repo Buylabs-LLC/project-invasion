@@ -103,5 +103,5 @@ end
 while true do
     sleep(0)
     updater()
-    parallel.waitForAny(checkForResponse, checkActive)
+    parallel.waitForAll(checkForResponse, checkActive)
 end
