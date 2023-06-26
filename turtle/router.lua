@@ -92,6 +92,7 @@ local function checkActive()
             end
         end
         debug('Active clients: '..activeClient.. '/'..totalClients)
+        sleep(10)
     end
 end
 
