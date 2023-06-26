@@ -12,6 +12,7 @@ print('Router Initialized')
 debug('Router Initialized', 'success')
 
 local function checkForResponse()
+    debug('Checking for responses/requests', 'info')
     id, msg, strReq = rednet.receive()
     if msg then
         if string.upper(strReq) == 'TURTLE' then
@@ -96,7 +97,7 @@ contact.master = function(fnc)
     end
 end
 
-local function no_sleep() sleep(5) end
+local function no_sleep() sleep(0) end
 
 while true do
     parallel.waitForAny(no_sleep, checkActive, checkForResponse)
