@@ -16,8 +16,9 @@ local id, msg, strReq
 debug('Router Initialized', 'success')
 
 local function checkForResponse()
-    id, msg, strReq = rednet.receive()
-    if msg then
+    repeat 
+        id, msg, strReq = rednet.receive()
+    until msg
         debug('Recivied a message', 'info')
         if string.upper(strReq) == 'TURTLE' then
             if not turtles[id] then
@@ -43,7 +44,6 @@ local function checkForResponse()
             debug('Contacted by an registered party', 'err')
             debug(strReq, 'err')
         end
-    end
     return true
 end
 
