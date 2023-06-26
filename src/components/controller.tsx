@@ -23,9 +23,9 @@ export default function Controller(){
                     <div className="drawer-content flex flex-row min-w-full gap-x-8 justify-center">
                         <label htmlFor="my-drawer" className="btn btn-primary drawer-button">See network</label>
                         
-                        <NavChildren Buttons={[{action: null, icon:faLeftLong}, {action: null, icon: faUpDownLeftRight}, {action: null, icon: faRightLong}]} />
-                        <NavChildren Buttons={[{action: null, icon:faLeftLong}, {action: null, icon: faDigging}, {action: null, icon: faRightLong}]} />
-                        <NavChildren Buttons={[{action: null, icon:faLeftLong}, {action: null, icon: faTrowel}, {action: null, icon: faRightLong}]} />
+                        <NavChildren Buttons={[{action: null, icon:faLeftLong, title: 'Move Up'}, {action: null, icon: faUpDownLeftRight, title: 'Move Forwards'}, {action: null, icon: faRightLong, title: 'Move Down'}]} />
+                        <NavChildren Buttons={[{action: null, icon:faLeftLong, title: 'Dig Up'}, {action: null, icon: faDigging, title: 'Dig Forwards'}, {action: null, icon: faRightLong, title: 'Dig Down'}]} />
+                        <NavChildren Buttons={[{action: null, icon:faLeftLong, title: 'Place Up'}, {action: null, icon: faTrowel, title: 'Place '}, {action: null, icon: faRightLong, title: 'Place Down'}]} />
 
                         <div className="info">
                             {/* @ts-ignore */}
@@ -113,9 +113,9 @@ function NavChildren({Buttons}: NavChildren){
     return (
         <ButtonGroup className="flex flex-row">
             {
-                Buttons.map((button: {action: any, icon: any}, index: number) =>{
+                Buttons.map((button: {action: any, icon: any, title: string}, index: number) =>{
                     return (
-                        <Button key={index} onClick={button.action}>
+                        <Button key={index} onClick={button.action} title={button.title}>
                             <FontAwesomeIcon icon={button.icon} />
                         </Button>
                     )
