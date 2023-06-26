@@ -27,7 +27,7 @@ local function activityHandler(table, key, value, name)
             table[key] = nil
         end
     else
-        debug('The master '..v.id..' is still active', 'succ')
+        debug('The master '..value.id..' is still active', 'succ')
         table[key].active = true
         activeClient = activeClient + 1
     end
