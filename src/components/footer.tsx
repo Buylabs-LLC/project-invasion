@@ -8,22 +8,26 @@ export default function FooterBar(){
                 <Footer.Title>
                     Front End Credits
                 </Footer.Title>
-                <p>TenCreator</p>
-                <p>TipsyTheCat</p>
+                <ul>
+                    <li>TenCreator</li>
+                </ul>
             </div>
             <div className='grow text-center'>
                 <Footer.Title>
                     Back End Credits
                 </Footer.Title>
-                <p>TenCreator</p>
-                <p>TipsyTheCat</p>
+                <ul>
+                    <li>TenCreator</li>
+                </ul>
             </div>
             <div className='grow text-center'>
                 <Footer.Title>
                     LUA Credits
                 </Footer.Title>
-                <p>TenCreator</p>
-                <p>TipsyTheCat</p>
+                <ul>
+                    <li>TenCreator</li>
+                    <li>TipsyTheCat</li>
+                </ul>
             </div>
         </Footer>
     )
