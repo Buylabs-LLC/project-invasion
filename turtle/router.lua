@@ -101,7 +101,4 @@ contact.master = function(fnc)
     end
 end
 
-while true do
-    parallel.waitForAny(checkForResponse, checkActive)
-    sleep(1)
-end
+parallel.waitForAny(checkForResponse, checkActive)
