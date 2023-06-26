@@ -22,8 +22,13 @@ local function checkActive()
         local difference = currentTime - lastpinged
 
         if (difference > 0.0010765655517) then
-            turtles[k].active = false
-            debug('The turtle '..v.id..' has gone inactive', 'err')
+            turtles[k].inactitity = v.inactitity + 1
+            if (turtles[k].inactitity >= 2) then
+                debug('The turtle '..v.id..' has gone inactive', 'err')
+                turtles[k].active = false
+                debug('Releasing the data of turtle '..v.id, 'info')
+                turtles[k] = nil
+            end
         else
             debug('The turtle '..v.id..' is still active', 'succ')
             turtles[k].active = true
@@ -32,14 +37,19 @@ local function checkActive()
     end
     for k,v in pairs(masters) do
         totalClients = totalClients + 1
-        debug('Checking active Turtles', 'info')
+        debug('Checking active Masters', 'info')
         local currentTime = os.time('utc')
         local lastpinged = v.lastpinged
         local difference = currentTime - lastpinged
 
         if (difference > 0.0010765655517) then
-            masters[k].active = false
-            debug('The master '..v.id..' has gone inactive', 'err')
+            masters[k].inactitity = v.inactitity + 1
+            if (masters[k].inactitity >= 2) then
+                debug('The master '..v.id..' has gone inactive', 'err')
+                masters[k].active = false
+                debug('Releasing the data of master '..v.id, 'info')
+                masters[k] = nil
+            end
         else
             debug('The master '..v.id..' is still active', 'succ')
             masters[k].active = true
@@ -68,20 +78,22 @@ while true do
     if msg then
         if string.upper(strReq) == 'TURTLE' then
             if not turtles[id] then
-                turtles[id] = {id = id, lastmsg = msg, lastpinged = os.time('utc'), active = true}
+                turtles[id] = {id = id, lastmsg = msg, lastpinged = os.time('utc'), active = true, inactitity = 0}
                 debug('Added a new turtle to the local db', 'success')
             else
                 turtles[id].lastmsg = msg
                 turtles[id].lastpinged = os.time('utc')
             end
+            -- Add handler here!
         elseif string.upper(strReq) == 'MASTER' then
             if not masters[id] then
-                masters[id] = {id = id, lastmsg = msg, lastpinged = os.time('utc'), active = true}
+                masters[id] = {id = id, lastmsg = msg, lastpinged = os.time('utc'), active = true, inactitity = 0}
                 debug('Added a new master to the local db', 'succ')
             else
                 masters[id].lastmsg = msg
                 masters[id].lastpinged = os.time('utc')
             end
+            -- Add handler here!
         elseif strReq == 'dns' then
             debug('DNS Query recived by '..id, 'dns')
         else
