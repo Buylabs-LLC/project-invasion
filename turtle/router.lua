@@ -43,6 +43,7 @@ local function checkForResponse()
             debug(strReq, 'err')
         end
     end
+    return true
 end
 
 local function checkActive()
@@ -92,6 +93,7 @@ local function checkActive()
         end
     end
     debug('Active clients: '..activeClient.. '/'..totalClients)
+    return true
 end
 
 contact.master = function(fnc)
