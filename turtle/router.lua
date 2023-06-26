@@ -98,8 +98,8 @@ end
 
 while true do
     sleep(0)
-    -- parallel.waitForAll(updater, checkActive, checkForResponse)
-    updater()
-    checkActive()
-    checkForResponse()
+    parallel.waitForAny(updater, checkActive, checkForResponse)
+    -- updater()
+    -- checkActive()
+    -- checkForResponse()
 end
