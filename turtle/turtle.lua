@@ -1,4 +1,4 @@
-turtle = {}
+func = {}
 local updater = require('/PJ-Invade/updater')
 updater()
 local config, debug = require('/PJ-Invade/config'), require('/PJ-Invade/debugger')
@@ -27,8 +27,58 @@ local function checkIfRouterIsRunning()
     end
 end
 
-turtle.getInven = function()
+-- Commands / things to do
 
+func.up = function()
+    if turtle.detectUp() then turtle.digUp() end
+    turtle.up()
+    return true
+end
+
+func.down = function()
+    if turtle.detectDown() then turtle.digDown() end
+    turtle.down()
+    return true
+end
+
+func.forward = function()
+    if turtle.detect() then turtle.dig() end
+    turtle.forward()
+    return true
+end
+
+func.refuel = function()
+    turtle.refuel()
+    return true
+end
+
+-- Getters
+
+func.getFuelLevel = function()
+    return turtle.getFuelLevel()
+end
+
+func.getInven = function()
+    local iven
+    for i in 16 do
+        table.insert(iven, turtle.getItemDetail(i))
+    end
+    return iven
+end
+
+func.checkInForwards = function()
+    if turtle.detect() then return turtle.inspect() end
+    return nil
+end
+
+func.checkInDown = function()
+    if turtle.detectDown() then return turtle.inspectDown() end
+    return nil
+end
+
+func.checkInUp = function()
+    if turtle.detectUp() then return turtle.inspectUp() end
+    return nil
 end
 
 while true do

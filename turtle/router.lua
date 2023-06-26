@@ -16,6 +16,7 @@ local function checkForResponse()
         debug('Checking for responses/requests', 'info')
         id, msg, strReq = rednet.receive()
         if msg then
+            debug('Response/request recived', 'success')
             if string.upper(strReq) == 'TURTLE' then
                 if not turtles[id] then
                     turtles[id] = {id = id, lastmsg = msg, lastpinged = os.time('utc'), active = true, inactitity = 0}
@@ -28,7 +29,7 @@ local function checkForResponse()
             elseif string.upper(strReq) == 'MASTER' then
                 if not masters[id] then
                     masters[id] = {id = id, lastmsg = msg, lastpinged = os.time('utc'), active = true, inactitity = 0}
-                    debug('Added a new master to the local db', 'succ')
+                    debug('Added a new master to the local db', 'success')
                 else
                     masters[id].lastmsg = msg
                     masters[id].lastpinged = os.time('utc')

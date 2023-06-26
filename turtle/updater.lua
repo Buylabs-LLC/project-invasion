@@ -52,6 +52,11 @@ function checkForUpdates()
       end
     end
 
+
+    local file = io.open(computerPath..'/installer.lua', "w")
+    file:write('')
+    file:close()
+
     -- Update the last stored commit hash
     local file = io.open(currentCommitFile, "w")
     file:write(latestCommitHash)

@@ -44,18 +44,13 @@ local function createStartupScript(filePath)
     -- Content of the startup script
     -- Change the file names as necessary
 
-    local int = 0
-    local restartIn = 5 -- Time in seconds
     peripheral.find('monitor', function(name, monitor)
       monitor.clear()
       return true
     end)
 
-    repeat
-      print('Starting in '..restartIn - int..' seconds...')
-      os.sleep(1)
-      int = int + 1
-    until int == restartIn
+    print('Running startup script: ]].. mainScript ..[[')
+
     shell.run("]] .. mainScript .. [[")
   ]]
 
