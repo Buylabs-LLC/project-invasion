@@ -100,6 +100,6 @@ end
 local function no_sleep() sleep(0) end
 
 while true do
-    parallel.waitForAny(no_sleep, checkActive, checkForResponse)
+    parallel.waitForAny(no_sleep, checkActive, checkForResponse, rednet.receive)
     sleep(1)
 end
