@@ -1,14 +1,18 @@
 -- local status = require('/PJ-Invade/status')
-local updater = require('/PJ-Invade/updater')
+local updater, config= require('/PJ-Invade/updater'), require('/PJ-Invade/config')
 updater()
-local config, debug = require('/PJ-Invade/config'), require('/PJ-Invade/debugger')
+
+
+peripheral.find("modem", rednet.open)
+rednet.host(config.network, 'main-router')
+print('Router Initialized')
+
+
+local debug = require('/PJ-Invade/debugger')
 local turtles, masters, contact = {}, {}, {}
 local id, msg, strReq
 
 -- Initialize router with network
-peripheral.find("modem", rednet.open)
-rednet.host(config.network, 'main-router')
-print('Router Initialized')
 debug('Router Initialized', 'success')
 
 local function checkForResponse()
@@ -98,8 +102,6 @@ end
 
 while true do
     sleep(0)
-    parallel.waitForAny(updater, checkActive, checkForResponse)
-    -- updater()
-    -- checkActive()
-    -- checkForResponse()
+    updater()
+    parallel.waitForAny(checkForResponse, checkActive)
 end
