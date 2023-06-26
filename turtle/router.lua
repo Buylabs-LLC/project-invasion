@@ -96,8 +96,7 @@ contact.master = function(fnc)
     end
 end
 
-local function no_sleep() sleep(10) end
-
 while true do
-    parallel.waitForAll(no_sleep, updater, checkActive, checkForResponse)
+    sleep(1)
+    parallel.waitForAny(updater, checkActive, checkForResponse)
 end
