@@ -19,9 +19,9 @@ export default function Controller(){
             <Navbar className="toolbar min-w-full">
 
                 <div className="drawer">
-                    <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+                    <input id="network-drawer" type="checkbox" className="drawer-toggle" />
                     <div className="drawer-content flex flex-row min-w-full gap-x-8 justify-center">
-                        <label htmlFor="my-drawer" className="btn btn-primary drawer-button">See network</label>
+                        <label htmlFor="network-drawer" className="btn btn-primary drawer-button">See network</label>
                         
                         <NavChildren Buttons={[{action: null, icon:faLeftLong, title: 'Move Up'}, {action: null, icon: faUpDownLeftRight, title: 'Move Forwards'}, {action: null, icon: faRightLong, title: 'Move Down'}]} />
                         <NavChildren Buttons={[{action: null, icon:faLeftLong, title: 'Dig Up'}, {action: null, icon: faDigging, title: 'Dig Forwards'}, {action: null, icon: faRightLong, title: 'Dig Down'}]} />
@@ -33,8 +33,8 @@ export default function Controller(){
                         </div>
 
                     </div> 
-                    <div id='my-drawer' className="drawer-side">
-                        <label htmlFor="my-drawer" className="drawer-overlay"></label>
+                    <div id='network-drawer' className="drawer-side">
+                        <label htmlFor="network-drawer" className="drawer-overlay"></label>
                         <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
                             <DrawerChildren />
                         </ul>
@@ -70,12 +70,20 @@ function DrawerChildren(){
     return (
         <>
             <Menu className="turtles">
-                <Menu.Title><FontAwesomeIcon icon={faUser} /></Menu.Title>
+                <Menu.Title>
+                    <span className='text-center font-black text-lg'>
+                        <FontAwesomeIcon icon={faUser} /> | Turtles
+                    </span>
+                </Menu.Title>
                 <CreateDrawerChildren data={turtles} />
             </Menu>
             <div className="divider"></div>
             <Menu className="masters">
-                <Menu.Title><FontAwesomeIcon icon={faServer} /></Menu.Title>
+                <Menu.Title>
+                    <span className='text-center font-black text-lg'>
+                        <FontAwesomeIcon icon={faServer} /> | Masters
+                    </span>
+                </Menu.Title>
                 <CreateDrawerChildren data={masters} selected={selected} setSelected={setSelected} />
             </Menu>
         </>
