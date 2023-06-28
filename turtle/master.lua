@@ -1,5 +1,3 @@
-local updater = require('/PJ-Invade/updater')
-updater()
 local config, debug = require('/PJ-Invade/config'), require('/PJ-Invade/debugger')
 local router, firstCheck, connectDown = rednet.lookup(config.network, 'main-router'), false, false
 peripheral.find("modem", rednet.open)
