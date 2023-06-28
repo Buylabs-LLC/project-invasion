@@ -1,7 +1,5 @@
-local config = require('/PJ-Invade/config.lua')
-print(config)
-local debug = require('/PJ-Invade/debugger.lua')
-print(debug)
+local debug = require('/PJ-Invade/debugger')
+local config = require('/PJ-Invade/config')
 local turtles, masters, contact = {}, {}, {}
 local id, msg, strReq
 
