@@ -1,6 +1,6 @@
 # Project invasion info 
 ## Info
-To install run `wget run https://pastebin.com/raw/ugDzcEFd` and input one of the following options upon asked.
+To install run `pastebin run https://pastebin.com/ugDzcEFd` and input one of the following options upon asked.
 - Turtle
 - Master
 - Router

@@ -64,8 +64,6 @@ function checkForUpdates()
 
     debug("Update complete, now rebooting for the changed to take effect", 'update')
     os.reboot()
-  else
-    debug('No updates found', 'info')
   end
 end
 
