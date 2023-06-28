@@ -1,6 +1,6 @@
 local debug = require('/PJ-Invade/debugger')
 local config = require('/PJ-Invade/config')
-local turtles, masters, dns, contact = {}, {}, {}
+local turtles, masters, dns, contact = {}, {}, {}, {}
 local id, msg, strReq
 
 -- Initialize router with network

@@ -16,7 +16,7 @@ function checkForUpdates()
     ["Authorization"] = "Bearer " .. authToken
   }
   local response = http.get(apiUrl, headers)
-  print(response)
+  print(response.status, response)
   local commitData = textutils.unserializeJSON(response.readAll())
   local commitName = commitData.commit.message
   local latestCommitHash = commitData.sha
@@ -69,5 +69,6 @@ function checkForUpdates()
 end
 
 while true do
+  sleep(2)
   checkForUpdates()
 end
