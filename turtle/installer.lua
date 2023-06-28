@@ -54,7 +54,7 @@ local function createStartupScript(filePath)
     
     local id
     for _, k in pairs(scripts) do
-      id = multishell.launch({shell = shell, multishell = multishell, require = require}, k.location)
+      id = multishell.launch({shell = shell, multishell = multishell, require = require, rednet = rednet, http = http, peripheral = peripheral}, k.location)
       print('Launching '..k.title)
       multishell.setTitle(id, k.title)
     end
