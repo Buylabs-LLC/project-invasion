@@ -69,4 +69,6 @@ function checkForUpdates()
   end
 end
 
-return checkForUpdates
+while true do
+  checkForUpdates()
+end
