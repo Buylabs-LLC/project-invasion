@@ -41,17 +41,23 @@ end
 local function createStartupScript(filePath)
   local mainScript = string.match(filePath, "(.-)%.lua$")
   local scriptContent = [[
-    -- Content of the startup script
-    -- Change the file names as necessary
-
     peripheral.find('monitor', function(name, monitor)
       monitor.clear()
       return true
     end)
 
-    print('Running startup script: ]].. mainScript ..[[')
-
-    shell.run("]] .. mainScript .. [[")
+    local scripts = {
+      {location = '/PJ-Invade/updater.lua', title = 'Updater'},
+      -- {location= '/PJ-Invade/status.lua', title="Status"},
+      {location = ']]..mainScript..[[', title = 'Main Script'},
+    }
+    
+    local id
+    for _, k in pairs(scripts) do
+      id = multishell.launch({}, k)
+      print('Launching '..k.title)
+      multishell.setTitle(id, k.title)
+    end
   ]]
 
   local file = io.open("/startup.lua", "w")

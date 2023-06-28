@@ -1,8 +1,5 @@
 func = {}
-local updater = require('/PJ-Invade/updater')
-updater()
 local config, debug = require('/PJ-Invade/config'), require('/PJ-Invade/debugger')
--- local status = require('/PJ-Invade/status')
 local router, firstCheck, connectDown = rednet.lookup(config.network, 'main-router'), false, false
 print('Turtle Initialized')
 debug('Turtle Initialized', 'success')
@@ -83,8 +80,7 @@ end
 
 while true do
     checkIfRouterIsRunning()
-    updater()
-
+    
     os.sleep(10)
 
     if router then

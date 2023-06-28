@@ -27,7 +27,6 @@ end
 
 while true do
     checkIfRouterIsRunning()
-    updater()
 
     os.sleep(10)
 

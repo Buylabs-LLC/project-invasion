@@ -1,6 +1,3 @@
--- local status = require('/PJ-Invade/status')
-local updater = require('/PJ-Invade/updater')
-updater()
 local config, debug = require('/PJ-Invade/config'), require('/PJ-Invade/debugger')
 local turtles, masters, contact = {}, {}, {}
 local id, msg, strReq
