@@ -41,6 +41,7 @@ end
 local function createStartupScript(filePath)
   local mainScript = string.match(filePath, "(.-)%.lua$")
   local scriptContent = [[
+    os.setComputerLabel()
     peripheral.find('monitor', function(name, monitor)
       monitor.clear()
       return true

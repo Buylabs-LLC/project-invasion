@@ -1,0 +1,24 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "sqlite"
+    url = "file:./sqlite.db"
+}
+
+model Turtle {
+    id Int @id @unique
+    name String
+    lastSeen DateTime?
+    Action String?
+    Active Boolean
+}
+
+model Master {
+    id Int @id @unique
+    name String
+    lastSeen DateTime?
+    Action String?
+    Active Boolean
+}

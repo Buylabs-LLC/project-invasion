@@ -1,5 +1,5 @@
 -- Configuration
-local apiUrl = "https://your-nextjs-api-endpoint.com/status"
+local apiUrl = "https://project-invasion.vercel.app/api/status"
 local updateInterval = 60 -- Update interval in seconds
 
 -- Function to gather computer information
@@ -10,8 +10,7 @@ local function getComputerInfo()
 
   return {
     id = computerId,
-    label = computerLabel,
-    peripherals = peripherals
+    type = 'turtle'
   }
 end
 
