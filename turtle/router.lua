@@ -1,5 +1,7 @@
 local config = require('/PJ-Invade/config')
+print(config)
 local debug = require('/PJ-Invade/debugger')
+print(debug)
 local turtles, masters, contact = {}, {}, {}
 local id, msg, strReq
 
