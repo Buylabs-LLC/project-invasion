@@ -1,6 +1,6 @@
 local debug = require('/PJ-Invade/debugger')
 local config = require('/PJ-Invade/config')
-local turtles, masters, contact = {}, {}, {}
+local turtles, masters, dns, contact = {}, {}, {}
 local id, msg, strReq
 
 -- Initialize router with network
@@ -34,7 +34,10 @@ local function checkForResponse()
                 end
                 -- Add handler here!
             elseif strReq == 'dns' then
-                debug('DNS Query recived by '..id, 'dns')
+                if not dns[id] then
+                    debug('DNS Query recived by '..id, 'dns')
+                    dns[id] = true
+                end
             else
                 debug('Contacted by an registered party', 'err')
                 debug(strReq, 'err')
