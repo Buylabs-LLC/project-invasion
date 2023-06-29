@@ -65,7 +65,7 @@ function DrawerChildren(){
     }, [masters])
 
     if (!turtles) {
-        setTurtles([{Id: 0, Name: 'No Turtles Found", Action: "N/A", Active: false}])
+        setTurtles([{Id: 0, Name: 'No Turtles Found', Action: "N/A", Active: false}])
     }
 
     if (!masters) {
