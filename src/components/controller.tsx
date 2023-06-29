@@ -69,7 +69,7 @@ function DrawerChildren(){
     }
 
     if (!masters) {
-        setMasters([{Id: 0, Name: 'No Masters Found", Action: "N/A", Active: false}])
+        setMasters([{Id: 0, Name: 'No Masters Found', Action: "N/A", Active: false}])
     }
 
     return (
