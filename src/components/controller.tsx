@@ -75,7 +75,7 @@ function DrawerChildren(){
                         <FontAwesomeIcon icon={faUser} /> | Turtles
                     </span>
                 </Menu.Title>
-                {turtles !== null ? return (<CreateDrawerChildren data={turtles} />) : return ()}
+                <CreateDrawerChildren data={turtles} />
             </Menu>
             <div className="divider"></div>
             <Menu className="masters">
@@ -84,7 +84,7 @@ function DrawerChildren(){
                         <FontAwesomeIcon icon={faServer} /> | Masters
                     </span>
                 </Menu.Title>
-                {masters !== null ? return (<CreateDrawerChildren data={masters} />) : return ()}
+                <CreateDrawerChildren data={masters} />
             </Menu>
         </>
     )
