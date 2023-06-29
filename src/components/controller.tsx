@@ -64,8 +64,13 @@ function DrawerChildren(){
             })
     }, [masters])
 
-    // if (!turtles) return
-    // if (!masters) return
+    if (!turtles) {
+        setTurtles([{Id: 0, Name: 'No Turtles Found", Action: "N/A", Active: false}])
+    }
+
+    if (!masters) {
+        setMasters([{Id: 0, Name: 'No Masters Found", Action: "N/A", Active: false}])
+    }
 
     return (
         <>
