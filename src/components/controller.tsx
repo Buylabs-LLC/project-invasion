@@ -5,7 +5,7 @@ import react, { useState, useEffect } from 'react'
 import Axios from 'axios'
 
 interface NavChildren {
-    Buttons: any
+    Buttons: [{title: string, action: string, icon: any}]
 }
 
 interface DrawerChildren {
@@ -96,7 +96,7 @@ function DrawerChildren(){
     )
 }
 
-function CreateDrawerChildren({data, selected, setSelected}: any){
+function CreateDrawerChildren({data, selected, setSelected}: {data: [any], selected: number, setSelected: any}){
     return data.map((v:{Name: string, Id: number, Action: string, LastSeen: string, Active: boolean}, index: number)=>{
         return (
             <Menu.Item key={index} className="hover-bordered">
