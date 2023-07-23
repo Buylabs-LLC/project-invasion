@@ -5,7 +5,7 @@ import react, { useState, useEffect } from 'react'
 import Axios from 'axios'
 
 interface NavChildren {
-    Buttons: [{title: string, action: string, icon: any}]
+    Buttons: [{title: string, action: string || null, icon: any}]
 }
 
 interface DrawerChildren {
