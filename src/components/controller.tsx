@@ -68,7 +68,7 @@ function DrawerChildren(){
                 if (response.data){
                     setMasters(response.data)
                 }else{
-                    setMasterss([{Id: -1, Name: 'No Turtles Found', Action: "N/A", Active: false}])
+                    setMasters([{Id: -1, Name: 'No Turtles Found', Action: "N/A", Active: false}])
                 }
             })
     }, [masters])
