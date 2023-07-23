@@ -49,8 +49,10 @@ function DrawerChildren(){
     const [turtles, setTurtles]: any = useState()
     const [masters, setMasters]: any = useState()
     const [selected, setSelected]: any = useState()
+    const [dbWorks, setDbWorks]: any = useState()
 
     useEffect(() =>{
+        if (!dbWorks) return
         Axios.get('/api/turtles')
             .then((response: {data: {}})=>{
                 setTurtles(response.data)
@@ -58,6 +60,7 @@ function DrawerChildren(){
     }, [turtles])
     
     useEffect(() =>{
+        if (!dbWorks) return
         Axios.get('/api/masters')
             .then((response: {data: {}})=>{
                 setMasters(response.data)
