@@ -52,28 +52,26 @@ function DrawerChildren(){
     const [dbWorks, setDbWorks]: any = useState()
 
     useEffect(() =>{
-        if (!dbWorks) return
         Axios.get('/api/turtles')
             .then((response: {data: {}})=>{
-                setTurtles(response.data)
+                if (response.data){
+                    setTurtles(response.data)
+                }else{
+                    setTurtles([{Id: -1, Name: 'No Turtles Found', Action: "N/A", Active: false}])
+                }
             })
     }, [turtles])
     
     useEffect(() =>{
-        if (!dbWorks) return
         Axios.get('/api/masters')
             .then((response: {data: {}})=>{
-                setMasters(response.data)
+                if (response.data){
+                    setMasters(response.data)
+                }else{
+                    setMasterss([{Id: -1, Name: 'No Turtles Found', Action: "N/A", Active: false}])
+                }
             })
     }, [masters])
-
-    if (!turtles) {
-        setTurtles([{Id: -1, Name: 'No Turtles Found', Action: "N/A", Active: false}])
-    }
-
-    if (!masters) {
-        setMasters([{Id: -1, Name: 'No Masters Found', Action: "N/A", Active: false}])
-    }
 
     return (
         <>
