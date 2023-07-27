@@ -12,6 +12,6 @@ Config['gitInfo']['repoOwner'] = 'BuyLabs-LLC'
 Config['gitInfo']['repoName'] = 'project-invasion'
 Config['gitInfo']['branch'] = 'main'
 Config['gitInfo']['authToken'] = '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'
-Config['gitInfo']['lua'] = 'turtle'
+Config['gitInfo']['lua'] = 'lua/master'
 
 return Config

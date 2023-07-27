@@ -5,16 +5,34 @@ local branch = "main" -- Replace with the desired branch name
 local authToken = "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" -- Replace with your GitHub personal access token
 
 local baseUrl = string.format("https://raw.githubusercontent.com/%s/%s/%s", repoOwner, repoName, branch)
-local folderPath = "turtle" -- Replace with the path to the folder in the repository
+local folderPath = "lua" -- Replace with the path to the folder in the repository
 
-local downloadUrls = {
-  MASTER = baseUrl .. "/" .. folderPath .. "/master.lua",
-  ROUTER = baseUrl .. "/" .. folderPath .. "/router.lua",
-  TURTLE = baseUrl .. "/" .. folderPath .. "/turtle.lua",
-  UPDATER = baseUrl .. "/" .. folderPath .. "/updater.lua",
-  CONFIG = baseUrl .. "/" .. folderPath .. "/config.lua",
-  STATUS = baseUrl .. "/" .. folderPath .. "/status.lua",
-  DEBUGGER = baseUrl .. "/" .. folderPath .. "/debugger.lua"
+local downloads = {
+  ['TURTLE'] = {
+    {name = 'main.lua', url = baseUrl .. "/" .. folderPath .. "/turtle/turtle.lua"},
+    -- General
+    {name = 'config.lua', url = baseUrl .. "/" .. folderPath .. "/turtle/config.lua"},
+    {name = 'debugger.lua', url = baseUrl .. "/" .. folderPath .. "/turtle/debugger.lua"},
+    {name = 'status.lua', url = baseUrl .. "/" .. folderPath .. "/turtle/status.lua"},
+    {name = 'updater.lua', url = baseUrl .. "/" .. folderPath .. "/turtle/updater.lua"},
+  }
+  ['MASTER'] = {
+    {name = 'main.lua', url = baseUrl .. "/" .. folderPath .. "/master/master.lua"},
+    {name = 'ws.lua', url = baseUrl .. "/" .. folderPath .. "/master/ws.lua"},
+    -- General
+    {name = 'config.lua', url = baseUrl .. "/" .. folderPath .. "/master/config.lua"},
+    {name = 'debugger.lua', url = baseUrl .. "/" .. folderPath .. "/master/debugger.lua"},
+    {name = 'status.lua', url = baseUrl .. "/" .. folderPath .. "/master/status.lua"},
+    {name = 'updater.lua', url = baseUrl .. "/" .. folderPath .. "/master/updater.lua"},
+  }
+  ['ROUTER'] = {
+    {name = 'main.lua', url = baseUrl .. "/" .. folderPath .. "/router/router.lua"},
+    -- General
+    {name = 'config.lua', url = baseUrl .. "/" .. folderPath .. "/router/config.lua"},
+    {name = 'debugger.lua', url = baseUrl .. "/" .. folderPath .. "/router/debugger.lua"},
+    {name = 'status.lua', url = baseUrl .. "/" .. folderPath .. "/router/status.lua"},
+    {name = 'updater.lua', url = baseUrl .. "/" .. folderPath .. "/router/updater.lua"},
+  }
 }
 
 shell.run('set motd.enabled false')
@@ -77,14 +95,11 @@ end
 -- Main program logic
 local fileType = promptInput("Type (Master, Router, or Turtle)")
 
-if downloadUrls[string.upper(fileType)] then
-  local fileName = fileType:lower() .. ".lua"
+if downloads[string.upper(fileType)] then
   local filePath = "/PJ-Invade/" .. fileName
-  downloadFile(downloadUrls[string.upper(fileType)], filePath)
-  downloadFile(downloadUrls['UPDATER'], '/PJ-Invade/updater.lua')
-  downloadFile(downloadUrls['CONFIG'], '/PJ-Invade/config.lua')
-  downloadFile(downloadUrls['STATUS'], '/PJ-Invade/status.lua')
-  downloadFile(downloadUrls['DEBUGGER'], '/PJ-Invade/debugger.lua')
+  for k,v in ipairs(downloads[string.upper(fileType)]) do
+    downloadFile(v.url, filePath + v.name)
+  end
   createStartupScript(filePath)
 
   local int = 0
