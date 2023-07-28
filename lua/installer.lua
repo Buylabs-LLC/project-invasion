@@ -9,7 +9,7 @@ local folderPath = "lua" -- Replace with the path to the folder in the repositor
 
 local downloads = {
   ['TURTLE'] = {
-    {name = 'main.lua', url = baseUrl .. "/" .. folderPath .. "/turtle/turtle.lua"},
+    {name = 'main.lua', url = baseUrl .. "/" .. folderPath .. "/turtle/main.lua"},
     -- General
     {name = 'config.lua', url = baseUrl .. "/" .. folderPath .. "/turtle/config.lua"},
     {name = 'debugger.lua', url = baseUrl .. "/" .. folderPath .. "/turtle/debugger.lua"},
@@ -17,7 +17,7 @@ local downloads = {
     {name = 'updater.lua', url = baseUrl .. "/" .. folderPath .. "/turtle/updater.lua"},
   },
   ['MASTER'] = {
-    {name = 'main.lua', url = baseUrl .. "/" .. folderPath .. "/master/master.lua"},
+    {name = 'main.lua', url = baseUrl .. "/" .. folderPath .. "/master/main.lua"},
     {name = 'ws.lua', url = baseUrl .. "/" .. folderPath .. "/master/ws.lua"},
     -- General
     {name = 'config.lua', url = baseUrl .. "/" .. folderPath .. "/master/config.lua"},
@@ -26,7 +26,7 @@ local downloads = {
     {name = 'updater.lua', url = baseUrl .. "/" .. folderPath .. "/master/updater.lua"},
   },
   ['ROUTER'] = {
-    {name = 'main.lua', url = baseUrl .. "/" .. folderPath .. "/router/router.lua"},
+    {name = 'main.lua', url = baseUrl .. "/" .. folderPath .. "/router/main.lua"},
     -- General
     {name = 'config.lua', url = baseUrl .. "/" .. folderPath .. "/router/config.lua"},
     {name = 'debugger.lua', url = baseUrl .. "/" .. folderPath .. "/router/debugger.lua"},
