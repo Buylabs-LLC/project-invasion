@@ -68,7 +68,7 @@ local function createStartupScript(filePath)
     local scripts = {
       {location = '/PJ-Invade/updater.lua', title = 'Updater'},
       -- {location= '/PJ-Invade/status.lua', title="Status"},
-      {location = ']]..filePath..[[.lua', title = ']]..mainScript..[['},
+      {location = ']]..filePath..[[', title = ']]..mainScript..[['},
     }
     
     local id
