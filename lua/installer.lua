@@ -2,7 +2,7 @@
 local repoOwner = "BuyLabs-LLC"
 local repoName = "project-invasion"
 local branch = "main" -- Replace with the desired branch name
-local authToken = "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" -- Replace with your GitHub personal access token
+local authToken = "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" -- Replace with your GitHub personal access token
 
 local baseUrl = string.format("https://raw.githubusercontent.com/%s/%s/%s", repoOwner, repoName, branch)
 local folderPath = "lua" -- Replace with the path to the folder in the repository
@@ -15,7 +15,7 @@ local downloads = {
     {name = 'debugger.lua', url = baseUrl .. "/" .. folderPath .. "/turtle/debugger.lua"},
     {name = 'status.lua', url = baseUrl .. "/" .. folderPath .. "/turtle/status.lua"},
     {name = 'updater.lua', url = baseUrl .. "/" .. folderPath .. "/turtle/updater.lua"},
-  }
+  },
   ['MASTER'] = {
     {name = 'main.lua', url = baseUrl .. "/" .. folderPath .. "/master/master.lua"},
     {name = 'ws.lua', url = baseUrl .. "/" .. folderPath .. "/master/ws.lua"},
@@ -24,7 +24,7 @@ local downloads = {
     {name = 'debugger.lua', url = baseUrl .. "/" .. folderPath .. "/master/debugger.lua"},
     {name = 'status.lua', url = baseUrl .. "/" .. folderPath .. "/master/status.lua"},
     {name = 'updater.lua', url = baseUrl .. "/" .. folderPath .. "/master/updater.lua"},
-  }
+  },
   ['ROUTER'] = {
     {name = 'main.lua', url = baseUrl .. "/" .. folderPath .. "/router/router.lua"},
     -- General
@@ -32,7 +32,7 @@ local downloads = {
     {name = 'debugger.lua', url = baseUrl .. "/" .. folderPath .. "/router/debugger.lua"},
     {name = 'status.lua', url = baseUrl .. "/" .. folderPath .. "/router/status.lua"},
     {name = 'updater.lua', url = baseUrl .. "/" .. folderPath .. "/router/updater.lua"},
-  }
+  },
 }
 
 shell.run('set motd.enabled false')
@@ -68,7 +68,7 @@ local function createStartupScript(filePath)
     local scripts = {
       {location = '/PJ-Invade/updater.lua', title = 'Updater'},
       -- {location= '/PJ-Invade/status.lua', title="Status"},
-      {location = ']]..filePath..[[', title = ']]..mainScript..[['},
+      {location = ']]..filePath..[[.lua', title = ']]..mainScript..[['},
     }
     
     local id
@@ -96,11 +96,11 @@ end
 local fileType = promptInput("Type (Master, Router, or Turtle)")
 
 if downloads[string.upper(fileType)] then
-  local filePath = "/PJ-Invade/" .. fileName
+  local filePath = "/PJ-Invade/"
   for k,v in ipairs(downloads[string.upper(fileType)]) do
-    downloadFile(v.url, filePath + v.name)
+    downloadFile(v.url, filePath .. v.name)
   end
-  createStartupScript(filePath)
+  createStartupScript('/PJ-Invade/main.lua')
 
   local int = 0
   local restartIn = 5 -- Time in seconds
