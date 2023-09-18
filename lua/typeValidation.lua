@@ -62,13 +62,13 @@ end
 validate.spesific = function(val1, val2) -- Input {'Something', ['something', 1, 2, 3, 4, 5]}
 	if not type(val2) == 'table' then
 		print('TYPE ERROR: Invalid value for val2, expected table got '..type(val2))
-		return
+		return false
 	end
 
 	for _,v in ipairs(val2) do
 		if not type(v) == 'string' then
 			print('TYPE ERROR: Invalid value for a child of val2, expected string got '..type(v))
-			return
+			return false
 		end
 		if type(val1) == v then
 			return true
